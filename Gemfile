@@ -16,6 +16,12 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'jquery'
+
+gem 'cloudinary', '~> 1.0.24'
+gem "attachinary"
+gem "jquery-fileupload-rails"
+gem "coffee-rails"
 
 group :development do
   gem 'web-console', '>= 3.3.0'

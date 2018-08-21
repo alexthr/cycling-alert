@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
-  get 'fix_reports/new'
-  get 'fix_reports/create'
-  get 'fix_reports/edit'
-  get 'fix_reports/update'
-  get 'votes/new'
-  get 'votes/create'
-  get 'votes/edit'
-  get 'votes/update'
-  get 'votes/destroy'
+  mount Attachinary::Engine => "/attachinary"
   devise_for :users
   root to: "issues#index"
   resources :issues, shallow: true do

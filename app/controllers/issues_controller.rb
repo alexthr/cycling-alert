@@ -8,10 +8,11 @@ class IssuesController < ApplicationController
   end
 
   def new
-
+    @issue = Issue.new
   end
 
   def create
+    @issue = Issue.new
 
   end
 
