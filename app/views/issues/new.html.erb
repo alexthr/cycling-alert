@@ -1,43 +1,58 @@
 <h1>Add pictures</h1>
 
 <%= simple_form_for @issue do |f| %>
-<div class="photo-form">
+<div id="photo-form">
 <label for="photo-upload">
-<span class="button button-icon"><i class="fas fa-camera"></i>Upload</span>
+<span id="upload-btn" class="button button-icon"><i class="fas fa-camera"></i>Upload</span>
 </label>
 <%= f.input_field :photos, as: :attachinary, id: "photo-upload", input_html: { class: "button" }%>
 </div>
-<div class="issue-form hidden">
+<%= f.button :button, 'Next', class: "button button-add hidden", id: "next-form-btn" %>
+<div id="issue-form" class="hidden">
 <%= f.input :title %>
 <%= f.input :description %>
-<%= f.button :button, 'Add Solution', class: "button button-icon", id: "title-description-save" %>
+<%= f.button :button, 'Have a solution to add?', class: "button button-icon", id: "add-solution-btn" %>
 </div>
-<%= f.input :solution, label_html: { class: "hidden", id: "solution-input-label" }, input_html: { class: "hidden", id: "solution-input" } %>
-<%= f.submit class: "hidden button" %>
+<div id="solution-form" class="hidden">
+<%= f.input :solution %>
+</div>
+<%= f.submit class: "hidden button", id: "submit-btn" %>
 <% end %>
 </div>
 
 <style>
+
+  #next-form-btn {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+  }
 
   .attachinary_container {
     margin-top: 20px;
   }
 
   .attachinary_container ul {
+    padding: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   .attachinary_container li {
-    margin-bottom: 10px;
+    margin: 0 20px 10px 20px;
     list-style: none;
-    flex: 1 0 50%;
+    flex: 1 0 125px;
+    max-width: 150px;
+    position: relative;
   }
 
-  .attachinary_container li img {
-
-
+  .attachinary_container li a {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+    color: grey;
   }
 
   .issue-form {
@@ -57,19 +72,35 @@
   span.button:hover {
     opacity: 1;
   }
+
 </style>
 
 <script>
-  let formBtn = document.getElementById("title-description-save");
-  const firstForm = document.querySelector(".first-form");
-  const solutionLabel = document.getElementById("solution-input-label");
-  const solutionField = document.querySelector("#solution-input");
-  formBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    solutionLabel.classList.remove("hidden-input")
-    solutionField.classList.remove("hidden-input")
-  })
+  const issueForm = document.getElementById("issue-form");
+  const photoForm = document.getElementById("photo-form");
+  const solutionForm = document.getElementById("solution-form");
+  const uploadBtn = document.getElementById("upload-btn");
+  const nextBtn = document.getElementById("next-form-btn");
+  const addSolutionBtn = document.getElementById("add-solution-btn");
+  const submitBtn = document.getElementById("submit-btn");
 
-  const removePhotoPrev = document.querySelector("div.attachinary_container > ul > li > a");
-  console.log(removePhotoPrev);
+  uploadBtn.addEventListener("click", (e) => {
+    nextBtn.classList.remove("hidden");
+  });
+
+  nextBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    photoForm.classList.add("hidden");
+    issueForm.classList.remove("hidden");
+    nextBtn.classList.add("hidden");
+    submitBtn.classList.remove("hidden");
+  });
+
+  addSolutionBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    addSolutionBtn.classList.add("hidden");
+    solutionForm.classList.remove("hidden");
+  });
+
+
 </script>
