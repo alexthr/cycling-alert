@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_20_124815) do
+ActiveRecord::Schema.define(version: 2018_08_20_131811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "issue_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["issue_id"], name: "index_comments_on_issue_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "fix_reports", force: :cascade do |t|
+    t.bigint "issue_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["issue_id"], name: "index_fix_reports_on_issue_id"
+    t.index ["user_id"], name: "index_fix_reports_on_user_id"
+  end
+
+  create_table "issues", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.text "solution"
+    t.json "photos"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "fix_status"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_issues_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +57,28 @@ ActiveRecord::Schema.define(version: 2018_08_20_124815) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
+    t.text "bio"
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.integer "direction"
+    t.bigint "issue_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["issue_id"], name: "index_votes_on_issue_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+
+  add_foreign_key "comments", "issues"
+  add_foreign_key "comments", "users"
+  add_foreign_key "fix_reports", "issues"
+  add_foreign_key "fix_reports", "users"
+  add_foreign_key "issues", "users"
+  add_foreign_key "votes", "issues"
+  add_foreign_key "votes", "users"
 end
