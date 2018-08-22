@@ -21,6 +21,7 @@ gem 'webpacker'
 gem "geocoder"
 
 gem 'jquery'
+gem 'jquery-rails'
 
 gem 'cloudinary', '~> 1.0.24'
 gem "attachinary"
