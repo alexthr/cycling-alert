@@ -49,32 +49,8 @@
 
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-wagon-item">
-    <i class="fa fa-bars color hamburger hidden"></i>
-    <i class="fas fa-map map"></i>
+    <i class="fa fa-bars color hidden" id="btn-card"></i>
+    <i class="fas fa-map" id="btn-map"></i>
   </div>
 
 </div>
-
-
-<style>
-
-.hidden {
-  display: none;
-}
-
-
-</style>
-
-<script>
-  document.querySelector(".map").addEventListener("click", function() {
-  document.querySelector(".map").classList.add("hidden") ;
-  document.querySelector(".hamburger").classList.remove("hidden") ;
-}, );
-
-  document.querySelector(".hamburger").addEventListener("click", function() {
-  document.querySelector(".hamburger").classList.add("hidden") ;
-  document.querySelector(".map").classList.remove("hidden") ;
-}, );
-
-</script>
-

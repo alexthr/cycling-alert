@@ -17,4 +17,21 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
   }
 }
 
+ const btnMap = document.getElementById("btn-map");
+ const btnCard = document.getElementById("btn-card");
+ const map = document.getElementById("map");
+ const cards = document.getElementById("cards");
 
+  btnMap.addEventListener("click", function() {
+    btnMap.classList.add("hidden") ;
+    btnCard.classList.remove("hidden") ;
+    cards.classList.add("hidden");
+    map.classList.remove("hidden");
+  }, );
+
+  btnCard.addEventListener("click", function() {
+    btnCard.classList.add("hidden") ;
+    btnMap.classList.remove("hidden") ;
+    map.classList.add("hidden");
+    cards.classList.remove("hidden");
+  }, );

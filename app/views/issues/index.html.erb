@@ -1,11 +1,14 @@
 <%= render 'navbar' %>
+
 <div class="container">
-  <div class="row">
-    <% @issues.each do |issue| %>
-      <div class="col-xs-12 col-sm-12 col-md-6">
-        <%= render 'card', issue: issue %>
-      </div>
-    <% end %>
+  <div class="card-display" id="cards">
+    <div class="row">
+      <% @issues.each do |issue| %>
+        <div class="col-xs-12 col-sm-12 col-md-6">
+          <%= render 'card', issue: issue %>
+        </div>
+      <% end %>
+    </div>
   </div>
   <div
   id="map"
@@ -13,5 +16,5 @@
   height: 600px;"
   data-markers="<%= @markers.to_json %>">
   </div>
-
 </div>
+
