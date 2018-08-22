@@ -10,7 +10,7 @@ gem 'rails', '5.2.1'
 gem 'redis'
 
 gem 'autoprefixer-rails'
-gem 'bootstrap', '~> 4.1.3'
+gem 'bootstrap-sass', '~> 3.3'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.0.9'
 gem 'sass-rails'
@@ -21,7 +21,6 @@ gem 'webpacker'
 gem "geocoder"
 
 gem 'jquery'
-gem 'jquery-rails'
 
 gem 'cloudinary', '~> 1.0.24'
 gem "attachinary"
