@@ -6,5 +6,9 @@ class Issue < ApplicationRecord
   has_many :votes, dependent: :destroy
   belongs_to :user
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   validates :title, :description, :photos, presence: true
+
 end
