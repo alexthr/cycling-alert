@@ -14,7 +14,7 @@
 }
 
 .button-icon {
-  background-color: #0C7C59;
+  background-color: $green;
 }
 
 .button-icon i {
@@ -25,16 +25,16 @@
   position: relative;
 }
 
-// .button-new {
-//   height: 60px;
-//   width: 60px;
-//   text-align: center;
-//   border-radius: 50%;
-//   position: absolute;
-//   position: fixed;
-//   top: 665px;
-//   left: 180px;
-// }
+.button-new {
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  border-radius: 50%;
+  position: absolute;
+  position: fixed;
+  top: 665px;
+  left: 180px;
+}
 
 .btn-new {
   font-size: 40px;
@@ -48,32 +48,16 @@
   text-align: center;
   border-radius: 50%;
   z-index: 1200;
+  box-shadow: 0.5px 0.5px 0.5px $black;
+  opacity: 0.95;
 
   &:focus, &:hover {
+  color: white;
+  background-color: #32AF96;
+  opacity: 1;
 
   }
 }
-
-.fa-plus-square {
-
-}
-
-// span {
-//   display: inline-block;
-//   height: 70px;
-//   overflow: hidden;
-//   position: absolute;
-//   width: 52px;
-//   bottom: 0px;
-//   border-radius: 5px;
-// }
-
-// i.icon-check:before {
-//     left: 5px;
-//     position: absolute;
-//     top: -8px;
-// }
-
 
 .button-next {
   background-color: #6E748A;
