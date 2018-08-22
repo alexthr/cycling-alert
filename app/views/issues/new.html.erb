@@ -5,7 +5,9 @@
 <label for="photo-upload">
 <span id="upload-btn" class="button button-icon"><i class="fas fa-camera"></i>Upload</span>
 </label>
-<%= f.input_field :photos, as: :attachinary, id: "photo-upload", input_html: { class: "button" }%>
+<div class="hidden">
+  <%= f.input_field :photos, as: :attachinary, id: "photo-upload", input_html: { class: "button" }%>
+</div>
 </div>
 <%= f.button :button, 'Next', class: "button button-add hidden", id: "next-form-btn" %>
 <div id="issue-form" class="hidden">
