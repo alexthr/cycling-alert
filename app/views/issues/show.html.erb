@@ -11,6 +11,9 @@
           <p><em><%= comment.created_at %></em></p>
         </div>
         <p><%= comment.content %></p>
+        <%= link_to comment_path(comment), method: "delete", class: "delete-comment" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
       </div>
     <% end %>
   </div>
@@ -23,11 +26,14 @@
           <p><em><%= comment.created_at %></em></p>
         </div>
         <p><%= comment.content %></p>
+        <%= link_to comment_path(comment), method: "delete", class: "delete-comment" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
       </div>
     <% end %>
   </div>
-  <button id="toggle-all-comments" class="button button-icon"><i class="fas fa-angle-down"></i>See all comments</button>
-  <button id="hide-all-comments" class="button button-icon"><i class="fas fa-angle-up"></i>Hide comments</button>
+  <p id="toggle-all-comments"><i class="fas fa-angle-down"></i> See all comments</p>
+  <p id="hide-all-comments"><i class="fas fa-angle-up"></i> Hide comments</p>
 </div>
 
 <button id="openCommentFormBtn" class="button button-icon"><i class="fas fa-comments"></i>Add a comment</button>
@@ -54,10 +60,23 @@
   display: none;
 }
 
+#all-comments {
+  position: relative;
+}
+
 .comment {
   padding: 20px;
   border-bottom: 1px solid #d3d3d3;
+  position: relative;
 }
+
+.delete-comment {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+}
+
+
 </style>
 
 

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :find_issue
+  before_action :find_issue, only: [:new, :create];
 
   def new
     @new_comment = Comment.new
@@ -22,6 +22,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to issue_path(@comment.issue)
   end
 
   private
