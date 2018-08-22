@@ -1,0 +1,51 @@
+
+  #next-form-btn {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+  }
+
+  .attachinary_container {
+    margin-top: 20px;
+  }
+
+  .attachinary_container ul {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .attachinary_container li {
+    margin: 0 20px 10px 20px;
+    list-style: none;
+    flex: 1 0 125px;
+    max-width: 150px;
+    position: relative;
+  }
+
+  .attachinary_container li a {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+    color: grey;
+  }
+
+  .issue-form {
+    margin-top: 20px;
+  }
+  .hidden {
+    display: none;
+  }
+
+  span.button {
+    z-index: 100;
+    position: absolute;
+    opacity: 1;
+    width: 100%;
+  }
+
+  span.button:hover {
+    opacity: 1;
+  }
