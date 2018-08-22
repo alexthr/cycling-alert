@@ -1,10 +1,13 @@
 class IssuesController < ApplicationController
+  before_action :find_issue
+
   def index
 
   end
 
   def show
-    @issue = Issue.find(params[:id])
+    @comments = Comment.where(issue_id: params[:id])
+    @comment = Comment.new
   end
 
   def new
@@ -34,6 +37,10 @@ class IssuesController < ApplicationController
   end
 
   private
+
+  def find_issue
+    @issue = Issue.find(params[:id])
+  end
 
   def issue_params
     params.require(:issue).permit(:title, :description, :solution,  photos: [])
