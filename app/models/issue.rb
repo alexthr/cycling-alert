@@ -7,5 +7,4 @@ class Issue < ApplicationRecord
   belongs_to :user
 
   validates :title, :description, :photos, presence: true
-
 end
