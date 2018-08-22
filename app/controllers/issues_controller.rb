@@ -1,5 +1,5 @@
 class IssuesController < ApplicationController
-  before_action :find_issue
+  before_action :find_issue, only: [:show, :edit, :update, :destroy]
 
   def index
 
