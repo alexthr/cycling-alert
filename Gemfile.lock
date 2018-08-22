@@ -254,7 +254,6 @@ DEPENDENCIES
   font-awesome-sass (~> 5.0.9)
   geocoder
   jbuilder (~> 2.0)
-  jquery-rails
   jquery
   jquery-fileupload-rails
   jquery-rails
