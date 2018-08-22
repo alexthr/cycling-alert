@@ -2,19 +2,21 @@
 
 <%= simple_form_for @issue do |f| %>
 <div id="photo-form">
-<label for="photo-upload">
-<span id="upload-btn" class="button button-icon"><i class="fas fa-camera"></i>Upload</span>
-</label>
-<%= f.input_field :photos, as: :attachinary, id: "photo-upload", input_html: { class: "button" }%>
+  <label for="photo-upload">
+    <span id="upload-btn" class="button button-icon"><i class="fas fa-camera"></i>Upload</span>
+  </label>
+  <div class="hidden">
+    <%= f.input_field :photos, as: :attachinary, id: "photo-upload", input_html: { class: "button" }%>
+  </div>
 </div>
 <%= f.button :button, 'Next', class: "button button-add hidden", id: "next-form-btn" %>
 <div id="issue-form" class="hidden">
-<%= f.input :title %>
-<%= f.input :description %>
-<%= f.button :button, 'Have a solution to add?', class: "button button-icon", id: "add-solution-btn" %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.button :button, 'Have a solution to add?', class: "button button-icon", id: "add-solution-btn" %>
 </div>
 <div id="solution-form" class="hidden">
-<%= f.input :solution %>
+  <%= f.input :solution %>
 </div>
 <%= f.submit class: "hidden button", id: "submit-btn" %>
 <% end %>
