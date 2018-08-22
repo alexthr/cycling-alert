@@ -2,19 +2,39 @@
 <p><%= @issue.description %></p>
 
 <div class="comment-thread">
-  <% @comments.each do |comment| %>
-  <div class="comment">
-    <h6><strong><%= comment.user.username %></strong></h6>
-    <p><%= comment.content %></p>
+  <div id="top-comments">
+    <% @comments.first(3).each do |comment| %>
+      <div class="comment">
+        <div class="comment-user">
+          <%= cl_image_tag "default-avatar", class: "comment-avatar" %>
+          <span><strong><%= comment.user.username %></strong></span>
+          <p><em><%= comment.created_at %></em></p>
+        </div>
+        <p><%= comment.content %></p>
+      </div>
+    <% end %>
   </div>
-  <% end %>
+  <div id="all-comments">
+    <% @comments.drop(5).each do |comment| %>
+      <div class="comment">
+        <div class="comment-user">
+          <%= cl_image_tag "default-avatar", class: "comment-avatar" %>
+          <span><strong><%= comment.user.username %></strong></span>
+          <p><em><%= comment.created_at %></em></p>
+        </div>
+        <p><%= comment.content %></p>
+      </div>
+    <% end %>
+  </div>
+  <button id="toggle-all-comments" class="button button-icon"><i class="fas fa-angle-down"></i>See all comments</button>
+  <button id="hide-all-comments" class="button button-icon"><i class="fas fa-angle-up"></i>Hide comments</button>
 </div>
 
 <button id="openCommentFormBtn" class="button button-icon"><i class="fas fa-comments"></i>Add a comment</button>
 <div id="comment-form" class="hidden">
   <%= simple_form_for [@issue, @comment] do |f| %>
   <%= f.input :content, label: false %>
-  <%= f.submit class: "button" %>
+  <button type="submit" class="button button-icon"><i class="fas fa-comment"></i>Comment</button>
   <% end %>
 </div>
 
@@ -23,16 +43,22 @@
 
 
 <style>
+.comment-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: inline-block;
+}
 
+#all-comments, #hide-all-comments {
+  display: none;
+}
+
+.comment {
+  padding: 20px;
+  border-bottom: 1px solid #d3d3d3;
+}
 </style>
 
-<script>
-  const commentForm = document.getElementById("comment-form");
-  const commentBtn = document.getElementById("openCommentFormBtn");
 
-  commentBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    commentForm.classList.remove("hidden")
-    commentForm.classList.add("visible");
-  })
-</script>
+
