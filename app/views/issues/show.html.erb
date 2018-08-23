@@ -14,7 +14,52 @@
 
   <h3>Solution</h3>
   <p><%= @issue.solution %></p>
+  
+  <div class="comment-thread">
+  <div id="top-comments">
+    <% @comments.first(3).each do |comment| %>
+      <div class="comment">
+        <div class="comment-user">
+          <%= cl_image_tag "default-avatar", class: "comment-avatar" %>
+          <span><strong><%= comment.user.username %></strong></span>
+          <p><em><%= comment.created_at %></em></p>
+        </div>
+        <p><%= comment.content %></p>
+        <%= link_to comment_path(comment), method: "delete", class: "delete-comment" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div id="all-comments">
+    <% @comments.drop(3).each do |comment| %>
+      <div class="comment">
+        <div class="comment-user">
+          <%= cl_image_tag "default-avatar", class: "comment-avatar" %>
+          <span><strong><%= comment.user.username %></strong></span>
+          <p><em><%= comment.created_at %></em></p>
+        </div>
+        <p><%= comment.content %></p>
+        <%= link_to comment_path(comment), method: "delete", class: "delete-comment" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <p id="toggle-all-comments"><i class="fas fa-angle-down"></i> See all comments</p>
+  <p id="hide-all-comments"><i class="fas fa-angle-up"></i> Hide comments</p>
 </div>
+
+<button id="openCommentFormBtn" class="button button-icon"><i class="fas fa-comments"></i>Add a comment</button>
+<div id="comment-form">
+  <%= simple_form_for [@issue, @comment] do |f| %>
+  <%= f.input :content, label: false %>
+  <button type="submit" class="button button-icon"><i class="fas fa-comment"></i>Comment</button>
+  <% end %>
+</div>
+  
+</div>
+
 
 <style>
   .item-size {
