@@ -1,19 +1,18 @@
-const commentForm = document.getElementById("comment-form");
-const commentBtn = document.getElementById("openCommentFormBtn");
-const submitCommentBtn = document.getElementById("comment-submit");
+// const commentForm = document.getElementById("comment-form");
+// const commentBtn = document.getElementById("openCommentFormBtn");
+// const submitCommentBtn = document.getElementById("comment-submit");
 
-if(commentBtn) {
-  commentBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    commentForm.classList.remove("hidden");
-    commentBtn.classList.add("hidden");
-  });
-}
+// if(commentBtn) {
+  $('#openCommentFormBtn').click(function(e) {
+    $('#comment-form').slideDown();
+    $('#openCommentFormBtn').hide();
+  })
 
 
-const toggleAllComments = document.getElementById("toggle-all-comments");
-const allComments = document.getElementById("all-comments");
-const hideAllComments = document.getElementById("hide-all-comments");
+
+// const toggleAllComments = document.getElementById("toggle-all-comments");
+// const allComments = document.getElementById("all-comments");
+// const hideAllComments = document.getElementById("hide-all-comments");
 
 
 $('#toggle-all-comments').click(function(e){

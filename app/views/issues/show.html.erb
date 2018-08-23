@@ -37,7 +37,7 @@
 </div>
 
 <button id="openCommentFormBtn" class="button button-icon"><i class="fas fa-comments"></i>Add a comment</button>
-<div id="comment-form" class="hidden">
+<div id="comment-form">
   <%= simple_form_for [@issue, @comment] do |f| %>
   <%= f.input :content, label: false %>
   <button type="submit" class="button button-icon"><i class="fas fa-comment"></i>Comment</button>
@@ -49,6 +49,7 @@
 
 
 <style>
+
 .comment-avatar {
   width: 50px;
   height: 50px;
@@ -56,7 +57,7 @@
   display: inline-block;
 }
 
-#all-comments, #hide-all-comments {
+#all-comments, #hide-all-comments, #comment-form {
   display: none;
 }
 
