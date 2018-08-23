@@ -1,3 +1,49 @@
 <%= render 'shared/navbar' %>
+<%= render 'carousel' %>
 
-<h1><%= @issue.title %></h1>
+<div class="container">
+  <div class="issue-title">
+    <h2><%= @issue.title %></h2>
+    <div class="issue-title-username">
+      <p>Posted by <%= @issue.user.username %></p>
+      <%= cl_image_tag "default-avatar", class: "profile" %>
+  </div>
+  </div>
+  <h3>Description</h3>
+  <p><%= @issue.description %></p>
+
+  <h3>Solution</h3>
+  <p><%= @issue.solution %></p>
+</div>
+
+<style>
+  .item-size {
+    height: calc(50vh - 70px);
+    width: 100%;
+  }
+
+  #photo-size {
+    height: calc(50vh - 70px);
+    width: 100%;
+  }
+
+  .issue-title-username {
+    display: flex;
+    align-items: center;
+  }
+
+  .issue-title-username p{
+    margin-bottom: 0;
+  }
+
+
+</style>
+
+<script>
+  const bullets = document.querySelectorAll(".carousel-indicators-bullet")
+  bullets[0].classList.add("active");
+
+  const photos = document.querySelectorAll(".item-size");
+  photos[0].classList.add("active");
+
+</script>
