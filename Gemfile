@@ -11,17 +11,22 @@ gem 'redis'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
+gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.0.9'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+
+gem "geocoder"
+
 gem 'jquery'
 
 gem 'cloudinary', '~> 1.0.24'
 gem "attachinary"
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
