@@ -23,6 +23,7 @@ function drawMap(mapElement) {
  const btnCard = document.getElementById("btn-card");
  const cards = document.getElementById("cards");
 
+if(btnMap) {
   btnMap.addEventListener("click", function() {
     btnMap.classList.add("hide") ;
     btnCard.classList.remove("hide") ;
@@ -30,10 +31,13 @@ function drawMap(mapElement) {
     map.classList.remove("hide");
     drawMap(map);
   });
+}
 
+if(btnCard) {
   btnCard.addEventListener("click", function() {
     btnCard.classList.add("hide") ;
     btnMap.classList.remove("hide") ;
     map.classList.add("hide");
     cards.classList.remove("hide");
   });
+}

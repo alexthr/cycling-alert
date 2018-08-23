@@ -19,15 +19,18 @@ travaux = Issue.new(title: 'Travaux sur la route', description: 'On ne peut plus
 viaduc = Issue.new(title: 'Viaduc effondré', description: 'Je ne peux plus circuler.', solution: 'Réparation urgente.', address: "10, rue du 14 juillet, le Pré-Saint-Gervais")
 acces = Issue.new(title: 'Pas d acces pour quitter la piste cyclable', description: 'Quand je prends cette piste cyclable, je ne peux pas la quitter sans traverser les grands boulevards, cest super dangereux.', solution: 'Construire une voix dacces de type pont pour les vélos.', address: "14, rue de l'Odéon, Paris")
 
+carine = User.where(username: "carineLC")
+alexthr = User.where(username: "alexthr")
+
 trou.user = sanchinho
 croisement.user = sanchinho
 piste.user = sanchinho
-eclairage.user = sanchinho
-dangereux.user = sanchinho
-sens_interdit.user = sanchinho
-travaux.user = sanchinho
-viaduc.user = sanchinho
-acces.user = sanchinho
+eclairage.user = carine
+dangereux.user = carine
+sens_interdit.user = carine
+travaux.user = alexthr
+viaduc.user = alexthr
+acces.user = alexthr
 
 
 trou.save
