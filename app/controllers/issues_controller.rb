@@ -2,14 +2,15 @@ class IssuesController < ApplicationController
   before_action :find_issue, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @issues = Issue.all
-    @issues = Issue.where.not(latitude: nil, longitude: nil)
-    @markers = @issues.map do |issue|
+
+    @map_issues = Issue.where.not(latitude: nil, longitude: nil)
+    @markers = @map_issues.map do |issue|
       {
         lat: issue.latitude,
         lng: issue.longitude,
       }
     end
+    @issues = Issue.all
   end
 
   def show
