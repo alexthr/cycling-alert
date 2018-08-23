@@ -7,7 +7,6 @@
   padding: 0px 5px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 /* Logo */
@@ -33,7 +32,7 @@
 }
 
 .align-right {
-    margin-right: 40px;
+    margin-right: 20px;
 }
 
 /* User Avatar */
@@ -57,7 +56,7 @@
 /* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
-  padding: 0 20px;
+  margin-right: 20px;
 }
 
 /* Navbar link */

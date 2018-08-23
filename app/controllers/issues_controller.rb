@@ -31,12 +31,11 @@ class IssuesController < ApplicationController
     end
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
-
+    @issue.update(issue_params)
+    redirect_to issu_path(@issue)
   end
 
   def destroy
@@ -50,6 +49,6 @@ class IssuesController < ApplicationController
   end
 
   def issue_params
-    params.require(:issue).permit(:title, :description, :solution,  photos: [])
+    params.require(:issue).permit(:title, :description, :solution, :fix_status, photos: [])
   end
 end

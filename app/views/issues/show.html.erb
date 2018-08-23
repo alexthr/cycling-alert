@@ -1,10 +1,18 @@
-<%= render 'shared/navbar' %>
 <%= render 'carousel' %>
 
 <div class="container">
   <div class="issue-card">
     <h2><strong><%= @issue.title %></strong></h2>
-    <p class="issue-status <%= @issue.fix_status.delete(" ") %>"><%= @issue.fix_status %></p>
+    <div class="issue-card-status">
+      <% if @issue.fix_reports.any?{ |fix_report| fix_report.user == current_user } %>
+         <p><em> Marked as solved! </em></p>
+      <% else %>
+        <p class="issue-status <%= @issue.fix_status.delete(" ") %>"><%= @issue.fix_status %> </p>
+      <% end %>
+      <% unless @issue.fix_reports.count >= 3 || @issue.fix_reports.any?{ |fix_report| fix_report.user == current_user } %>
+        <p><%= link_to "Resolved?", issue_fix_reports_path(@issue), method: :post, class: "change-status", id: "status-button" %></p>
+      <% end %>
+    </div>
     <div class="issue-title-username">
       <p>Posted by <%= @issue.user.username %></p>
       <%= cl_image_tag "default-avatar", class: "profile-avatar" %>
@@ -69,3 +77,11 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  statusBtn = document.getElementById("status-button")
+  statusBtn.addEventListener ("click", (e) => {
+    e.preventDefault()
+    statusBtn.classList.add("hide")
+  })
+</script>
