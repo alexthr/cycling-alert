@@ -14,19 +14,49 @@
 }
 
 .button-icon {
-  background-color: #0C7C59;
+  background-color: $green;
 }
 
 .button-icon i {
   margin-right: 10px;
 }
 
+.card {
+  position: relative;
+}
+
 .button-new {
-  background-color: #E23F36;
   height: 60px;
   width: 60px;
   text-align: center;
   border-radius: 50%;
+  position: absolute;
+  position: fixed;
+  top: 665px;
+  left: 180px;
+}
+
+.btn-new {
+  font-size: 40px;
+  position: fixed;
+  top: 650px;
+  left: 180px;
+  color: white;
+  background-color: $green;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  border-radius: 50%;
+  z-index: 1200;
+  box-shadow: 0.5px 0.5px 0.5px $black;
+  opacity: 0.95;
+
+  &:focus, &:hover {
+  color: white;
+  background-color: #32AF96;
+  opacity: 1;
+
+  }
 }
 
 .button-next {
