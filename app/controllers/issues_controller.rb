@@ -6,7 +6,7 @@ class IssuesController < ApplicationController
   end
 
   def show
-    @comments = Comment.where(issue_id: params[:id])
+    @comments = @issue.comments
     @comment = Comment.new
   end
 

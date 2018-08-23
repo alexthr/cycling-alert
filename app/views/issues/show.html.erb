@@ -18,7 +18,7 @@
     <% end %>
   </div>
   <div id="all-comments">
-    <% @comments.drop(5).each do |comment| %>
+    <% @comments.drop(3).each do |comment| %>
       <div class="comment">
         <div class="comment-user">
           <%= cl_image_tag "default-avatar", class: "comment-avatar" %>
@@ -48,37 +48,7 @@
 
 
 
-<style>
 
-.comment-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-#all-comments, #hide-all-comments, #comment-form {
-  display: none;
-}
-
-#all-comments {
-  position: relative;
-}
-
-.comment {
-  padding: 20px;
-  border-bottom: 1px solid #d3d3d3;
-  position: relative;
-}
-
-.delete-comment {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-}
-
-
-</style>
 
 
 
