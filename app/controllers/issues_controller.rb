@@ -32,12 +32,9 @@ class IssuesController < ApplicationController
     end
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
-
   end
 
   def destroy
@@ -51,6 +48,6 @@ class IssuesController < ApplicationController
   end
 
   def issue_params
-    params.require(:issue).permit(:title, :description, :solution, :longitude, :latitude,  photos: [])
+    params.require(:issue).permit(:title, :description, :solution, :fix_status, :longitude, :latitude,  photos: [])
   end
 end
