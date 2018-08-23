@@ -14,7 +14,9 @@
     <%= f.input :description %>
     <%= f.hidden_field :latitude %>
     <%= f.hidden_field :longitude %>
-    <%= f.hidden_field :address %>
+    <div class="hidden" id="hidden_address">
+      <%= f.input :address %>
+    </div>
 
     <%= f.button :button, 'Have a solution to add?', class: "button button-icon", id: "add-solution-btn" %>
   </div>
@@ -27,19 +29,15 @@
 
 <script>
   navigator.geolocation.getCurrentPosition(function(location) {
-  document.getElementById("issue_longitude").value = location.coords.latitude;
-  document.getElementById("issue_latitude").value = location.coords.longitude;
-})
-
-const nextBtn = document.getElementById("next-form-btn");
-nextBtn.addEventListener("click", function() {
-if document.getElementById("issue_longitude").value === " "
-  const $ip = $('<input>').attr({
-      type: 'hidden',
-      id: 'issue_address'
+    document.getElementById("issue_latitude").value = location.coords.latitude;
+    document.getElementById("issue_longitude").value = location.coords.longitude;
   })
-$ip.remove('hidden');
-})
+
+  const nextBtn = document.getElementById("next-form-btn");
+  nextBtn.addEventListener("click", function() {
+    if (document.getElementById("issue_longitude").value === "") {
+      hidden_address.classList.remove("hidden");}
+  })
 
 </script>
 
