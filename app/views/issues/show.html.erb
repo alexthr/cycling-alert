@@ -10,11 +10,11 @@
       <h2><%= @issue.title %></h2>
       <div class="votes">
         <%= link_to issue_votes_path(@issue, direction: 1), method: "post" do %>
-          <i class="fas fa-thumbs-up" style="color: green;"></i>
+          <i class="fas fa-thumbs-up" style="color: #32B796;"></i>
         <% end %>
-        <p style="font-size: 30px;"><%= sum %></p>
+        <p style="font-size: 20px;"><%= sum %></p>
         <%= link_to issue_votes_path(@issue, direction: -1), method: "post" do %>
-            <i class="fas fa-thumbs-down" style="color: red;"></i>
+            <i class="fas fa-thumbs-down" style="color: #E23E36;"></i>
         <% end %>
       </div>
     </div>
@@ -91,7 +91,8 @@
     align-items: center;
     text-align: center;
     justify-content: space-between;
-    flex: 1 0 100px;
+    max-width: 125px;
+    flex: 1 1 100px;
   }
 
   .votes i {
