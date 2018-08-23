@@ -19,6 +19,7 @@ class CommentsController < ApplicationController
   end
 
   def update
+
   end
 
   def destroy
