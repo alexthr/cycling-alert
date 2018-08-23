@@ -35,8 +35,6 @@ class IssuesController < ApplicationController
   def edit; end
 
   def update
-    @issue.update(issue_params)
-    redirect_to issu_path(@issue)
   end
 
   def destroy
