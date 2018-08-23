@@ -1,20 +1,33 @@
 <%= render 'shared/navbar' %>
 <%= render 'carousel' %>
+<% sum = 0 %>
+<% @issue.votes.each { |vote| sum += vote.direction } %>
+
 
 <div class="container">
   <div class="issue-title">
-    <h2><%= @issue.title %></h2>
+    <div class="title-flex">
+      <h2><%= @issue.title %></h2>
+      <div class="votes">
+        <%= link_to issue_votes_path(@issue, direction: 1), method: "post" do %>
+          <i class="fas fa-thumbs-up" style="color: green;"></i>
+        <% end %>
+        <p style="font-size: 30px;"><%= sum %></p>
+        <%= link_to issue_votes_path(@issue, direction: -1), method: "post" do %>
+            <i class="fas fa-thumbs-down" style="color: red;"></i>
+        <% end %>
+      </div>
+    </div>
     <div class="issue-title-username">
       <p>Posted by <%= @issue.user.username %></p>
       <%= cl_image_tag "default-avatar", class: "profile" %>
-  </div>
+    </div>
   </div>
   <h3>Description</h3>
   <p><%= @issue.description %></p>
 
   <h3>Solution</h3>
   <p><%= @issue.solution %></p>
-
   <div class="comment-thread">
   <div id="top-comments">
     <% @comments.first(3).each do |comment| %>
@@ -62,6 +75,30 @@
 
 
 <style>
+  .title-flex {
+    display: flex;
+  }
+
+  .title-flex h2 {
+    margin-top: 0;
+    padding-top: 25px;
+  }
+
+  .votes {
+    padding: 25px 0 12.5px 0;
+    margin-left: 50px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    flex: 1 0 100px;
+  }
+
+  .votes i {
+    font-size: 30px;
+    color: black;
+  }
+
   .item-size {
     height: calc(50vh - 70px);
     width: 100%;
