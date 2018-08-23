@@ -4,16 +4,20 @@
 <div class="container">
   <div class="issue-title">
     <h2><%= @issue.title %></h2>
+    <p class="issue-status <%= @issue.fix_status.delete(" ") %>"><%= @issue.fix_status %></p>
     <div class="issue-title-username">
       <p>Posted by <%= @issue.user.username %></p>
       <%= cl_image_tag "default-avatar", class: "profile-avatar" %>
     </div>
   </div>
+
   <h3>Description</h3>
   <p><%= @issue.description %></p>
 
-  <h3>Solution</h3>
-  <p><%= @issue.solution %></p>
+  <% if @issue.solution != "" %>
+    <h3>Solution</h3>
+    <p><%= @issue.solution %></p>
+  <% end %>
 
   <div class="comment-thread">
     <div id="top-comments">

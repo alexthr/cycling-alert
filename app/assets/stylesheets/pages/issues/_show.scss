@@ -35,6 +35,7 @@
   width: 100%;
 }
 
+
 .issue-title-username {
   display: flex;
   align-items: center;
@@ -42,4 +43,21 @@
 
 .issue-title-username p{
   margin-bottom: 0;
+}
+
+.issue-status {
+  font-weight: lighter;
+  font-style: italic;
+}
+
+.pending {
+  color: $red;
+}
+
+.inprogress {
+  color: $orange;
+}
+
+.resolved{
+  color: $green;
 }
