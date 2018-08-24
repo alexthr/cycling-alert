@@ -4,7 +4,7 @@
 <div class="container">
   <div class="issue-title issue-card">
     <div class="title-flex">
-      <h2><strong><%= @issue.title %></strong></h2>
+      <h3><strong><%= @issue.title %></strong></h3>
       <div class="votes">
         <%= link_to issue_votes_path(@issue, direction: 1), method: "post" do %>
           <i class="fas fa-thumbs-up" style="color: #32B796;"></i>
@@ -31,12 +31,12 @@
     </div>
   </div>
   <div class="issue-card">
-    <h3>Description</h3>
+    <h4>Description</h4>
     <p><%= @issue.description %></p>
   </div>
   <% if @issue.solution != "" %>
   <div class="issue-card">
-    <h3>Solution</h3>
+    <h4>Solution</h4>
     <p><%= @issue.solution %></p>
   </div>
   <% end %>
@@ -123,7 +123,7 @@
   }
 
   .votes i {
-    font-size: 30px;
+    font-size: 20px;
     color: black;
   }
 </style>
