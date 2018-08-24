@@ -3,6 +3,11 @@ class VotesController < ApplicationController
     @issue = Issue.find(params[:issue_id])
     @vote = @issue.votes.new(direction: params[:direction])
     @vote.user = current_user
+    if @vote.direction == 1
+      @issue.update(vote_count: @issue.vote_count += 1)
+    else
+      @issue.update(vote_count: @issue.vote_count -= 1)
+    end
     if @vote.save
       redirect_to issue_path(@issue)
     else

@@ -2,15 +2,19 @@ class IssuesController < ApplicationController
   before_action :find_issue, only: [:show, :edit, :update, :destroy]
 
   def index
-
     @map_issues = Issue.where.not(latitude: nil, longitude: nil)
-    @markers = @map_issues.map do |issue|
+    @markers = @issues.map do |issue|
       {
         lat: issue.latitude,
         lng: issue.longitude,
+        infoWindow: { content: render_to_string(partial: "/issues/map_info_window", locals: { issue: issue }) },
+        # picture: {
+        # "url": view_context.image_path("logo.png"),
+        # "width":  50,
+        # "height": 45 }
       }
     end
-    @issues = Issue.all
+    @issues = Issue.all.order(vote_count: :desc)
   end
 
   def show
@@ -48,6 +52,6 @@ class IssuesController < ApplicationController
   end
 
   def issue_params
-    params.require(:issue).permit(:title, :description, :solution, :fix_status, :longitude, :latitude,  photos: [])
+    params.require(:issue).permit(:title, :description, :solution, :address, :fix_status, :longitude, :latitude,  photos: [])
   end
 end

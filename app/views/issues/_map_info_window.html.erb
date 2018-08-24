@@ -1,0 +1,20 @@
+<%= link_to issue_path(issue) do %>
+<div class="info-window">
+  <div class="card-window" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path issue.photos[0].path, effect: { auto_color: 99 } %>);">
+  </div>
+  <div class="info-window-issue-info">
+    <h4><%= issue.title %></h4>
+    <h6><%= issue.description.split.first(6).join(' ') %>...</h6>
+  </div>
+</div>
+<% end %>
+
+<style>
+
+.card-window {
+  width: 300px;
+  height: 300px;
+  background-size: cover;
+}
+
+</style>
