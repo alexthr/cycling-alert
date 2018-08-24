@@ -7,8 +7,8 @@
     </label>
     <%= f.input_field :photos, as: :attachinary, id: "photo-upload", input_html: { class: "button" }%>
   </div>
-  <%= f.button :button, 'Next', class: "button button-add hidden", id: "next-form-btn" %>
-  <div id="issue-form" class="hidden">
+  <%= f.button :button, 'Next', class: "button button-add", id: "next-form-btn" %>
+  <div id="issue-form">
     <%= f.input :title %>
     <%= f.input :description %>
     <%= f.hidden_field :latitude %>
@@ -19,25 +19,19 @@
 
     <%= f.button :button, 'Have a solution to add?', class: "button button-icon", id: "add-solution-btn" %>
   </div>
-  <div id="solution-form" class="hidden">
+  <div id="solution-form">
     <%= f.input :solution %>
   </div>
-  <%= f.submit class: "hidden button", id: "submit-btn" %>
+  <%= f.submit class: "button", id: "submit-btn" %>
   <% end %>
 </div>
 
-<script>
-  navigator.geolocation.getCurrentPosition(function(location) {
-    document.getElementById("issue_latitude").value = location.coords.latitude;
-    document.getElementById("issue_longitude").value = location.coords.longitude;
-  })
+<style>
+  #issue-form, #solution-form, #next-form-btn, #submit-btn {
+    display: none;
+  }
+</style>
 
-  const nextBtn = document.getElementById("next-form-btn");
-  nextBtn.addEventListener("click", function() {
-    if (document.getElementById("issue_longitude").value === "") {
-      hidden_address.classList.remove("hidden");}
-  })
 
-</script>
 
 
