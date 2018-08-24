@@ -1,13 +1,12 @@
-<%= render 'shared/navbar' %>
 <%= render 'carousel' %>
 <% sum = 0 %>
 <% @issue.votes.each { |vote| sum += vote.direction } %>
 
 
 <div class="container">
-  <div class="issue-title">
+  <div class="issue-title issue-card">
     <div class="title-flex">
-      <h2><%= @issue.title %></h2>
+      <h2><strong><%= @issue.title %></strong></h2>
       <div class="votes">
         <%= link_to issue_votes_path(@issue, direction: 1), method: "post" do %>
           <i class="fas fa-thumbs-up" style="color: #32B796;"></i>
@@ -22,15 +21,30 @@
       <p>Posted by <%= @issue.user.username %></p>
       <%= cl_image_tag "default-avatar", class: "profile" %>
     </div>
+    <div class="issue-card-status">
+      <% if @issue.fix_reports.any?{ |fix_report| fix_report.user == current_user } %>
+         <p><em> Marked as solved! </em></p>
+      <% else %>
+        <p class="issue-status <%= @issue.fix_status.delete(" ") %>"><%= @issue.fix_status %> </p>
+      <% end %>
+      <% unless @issue.fix_reports.count >= 3 || @issue.fix_reports.any?{ |fix_report| fix_report.user == current_user } %>
+        <p><%= link_to "Resolved?", issue_fix_reports_path(@issue), method: :post, class: "change-status", id: "status-button" %></p>
+      <% end %>
+    </div>
   </div>
-  <h3>Description</h3>
-  <p><%= @issue.description %></p>
-
-  <h3>Solution</h3>
-  <p><%= @issue.solution %></p>
+  <div class="issue-card">
+    <h3>Description</h3>
+    <p><%= @issue.description %></p>
+  </div>
+  <% if @issue.solution != "" %>
+  <div class="issue-card">
+    <h3>Solution</h3>
+    <p><%= @issue.solution %></p>
+  </div>
+  <% end %>
   <div class="comment-thread">
-  <div id="top-comments">
-    <% @comments.first(3).each do |comment| %>
+    <div id="top-comments">
+      <% @comments.first(3).each do |comment| %>
       <div class="comment">
         <div class="comment-user">
           <%= cl_image_tag "default-avatar", class: "comment-avatar" %>
@@ -46,13 +60,13 @@
         </div>
         <p><%= comment.content %></p>
         <%= link_to comment_path(comment), method: "delete", class: "delete-comment" do %>
-          <i class="fas fa-trash-alt"></i>
+        <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-    <% end %>
-  </div>
-  <div id="all-comments">
-    <% @comments.drop(3).each do |comment| %>
+      <% end %>
+    </div>
+    <div id="all-comments">
+      <% @comments.drop(3).each do |comment| %>
       <div class="comment">
         <div class="comment-user">
           <%= cl_image_tag "default-avatar", class: "comment-avatar" %>
@@ -68,22 +82,24 @@
         </div>
         <p><%= comment.content %></p>
         <%= link_to comment_path(comment), method: "delete", class: "delete-comment" do %>
-          <i class="fas fa-trash-alt"></i>
+        <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
+      <% end %>
+    </div>
+    <% if @comments.size > 3 %>
+    <p id="toggle-all-comments"><i class="fas fa-angle-down"></i> See all comments</p>
+    <p id="hide-all-comments"><i class="fas fa-angle-up"></i> Hide comments</p>
     <% end %>
   </div>
-  <p id="toggle-all-comments"><i class="fas fa-angle-down"></i> See all comments</p>
-  <p id="hide-all-comments"><i class="fas fa-angle-up"></i> Hide comments</p>
-</div>
 
-<button id="openCommentFormBtn" class="button button-icon"><i class="fas fa-comments"></i>Add a comment</button>
-<div id="comment-form">
-  <%= simple_form_for [@issue, @comment] do |f| %>
-  <%= f.input :content, label: false %>
-  <button type="submit" class="button button-icon"><i class="fas fa-comment"></i>Comment</button>
-  <% end %>
-</div>
+  <button id="openCommentFormBtn" class="button button-icon"><i class="fas fa-comments"></i>Add a comment</button>
+  <div id="comment-form">
+    <%= simple_form_for [@issue, @comment] do |f| %>
+    <%= f.input :content, label: false, placeholder: "add your comment" %>
+    <button type="submit" class="button button-icon"><i class="fas fa-comment"></i>Comment</button>
+    <% end %>
+  </div>
 
 </div>
 
@@ -136,11 +152,3 @@
 
 </style>
 
-<script>
-  const bullets = document.querySelectorAll(".carousel-indicators-bullet")
-  bullets[0].classList.add("active");
-
-  const photos = document.querySelectorAll(".item-size");
-  photos[0].classList.add("active");
-
-</script>

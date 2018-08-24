@@ -1,4 +1,3 @@
-<%= render 'shared/navbar' %>
 <div class="container">
   <h1>Add pictures</h1>
   <%= simple_form_for @issue do |f| %>
@@ -12,6 +11,12 @@
   <div id="issue-form" class="hidden">
     <%= f.input :title %>
     <%= f.input :description %>
+    <%= f.hidden_field :latitude %>
+    <%= f.hidden_field :longitude %>
+    <div class="hidden" id="hidden_address">
+      <%= f.input :address %>
+    </div>
+
     <%= f.button :button, 'Have a solution to add?', class: "button button-icon", id: "add-solution-btn" %>
   </div>
   <div id="solution-form" class="hidden">
@@ -21,5 +26,18 @@
   <% end %>
 </div>
 
+<script>
+  navigator.geolocation.getCurrentPosition(function(location) {
+    document.getElementById("issue_latitude").value = location.coords.latitude;
+    document.getElementById("issue_longitude").value = location.coords.longitude;
+  })
+
+  const nextBtn = document.getElementById("next-form-btn");
+  nextBtn.addEventListener("click", function() {
+    if (document.getElementById("issue_longitude").value === "") {
+      hidden_address.classList.remove("hidden");}
+  })
+
+</script>
 
 
