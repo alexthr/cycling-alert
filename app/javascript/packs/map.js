@@ -25,19 +25,19 @@ function drawMap(mapElement) {
 
 if(btnMap) {
   btnMap.addEventListener("click", function() {
-    btnMap.classList.add("hide") ;
-    btnCard.classList.remove("hide") ;
-    cards.classList.add("hide");
-    map.classList.remove("hide");
+    btnMap.classList.add("hidden") ;
+    btnCard.classList.remove("hidden");
+    cards.classList.add("hidden");
+    map.style.display = "block";
     drawMap(map);
   });
 }
 
 if(btnCard) {
   btnCard.addEventListener("click", function() {
-    btnCard.classList.add("hide") ;
-    btnMap.classList.remove("hide") ;
-    map.classList.add("hide");
-    cards.classList.remove("hide");
+    btnCard.classList.add("hidden") ;
+    btnMap.classList.remove("hidden") ;
+    map.style.display = "none";
+    cards.classList.remove("hidden");
   });
 }

@@ -59,3 +59,7 @@
   span.button:hover {
     opacity: 1;
   }
+
+  #issue-form, #solution-form, #next-form-btn, #submit-btn {
+    display: none;
+  }
