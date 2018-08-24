@@ -38,8 +38,8 @@
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-wagon-item">
     <% if current_page?(root_path) %>
-        <i class="fas fa-list-ul hide" id="btn-card"></i>
-        <i class="fas fa-map" id="btn-map"></i>
+        <i class="fas fa-list-ul hide" id="btn-card"><div><h6 class="h6-btn">Liste</h6></div></i>
+        <i class="fas fa-map" id="btn-map"><div><h6 class="h6-btn">Carte</h6></div></i>
     <% else %>
       <div class="dropdown">
         <i class="fa fa-bars dropdown-toggle color" data-toggle="dropdown"></i>
@@ -54,4 +54,19 @@
     <% end %>
   </div>
 </div>
+
+<style>
+
+.h6-btn {
+  margin-top: 0px;
+}
+
+.navbar-wagon-item {
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+</style>
+
 

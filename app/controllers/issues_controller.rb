@@ -3,6 +3,7 @@ class IssuesController < ApplicationController
 
   def index
     @map_issues = Issue.where.not(latitude: nil, longitude: nil)
+    @issues = Issue.all.order(vote_count: :desc)
     @markers = @issues.map do |issue|
       {
         lat: issue.latitude,
@@ -14,7 +15,6 @@ class IssuesController < ApplicationController
         # "height": 45 }
       }
     end
-    @issues = Issue.all.order(vote_count: :desc)
   end
 
   def show
