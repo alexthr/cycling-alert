@@ -53,6 +53,6 @@ class IssuesController < ApplicationController
   end
 
   def issue_params
-    params.require(:issue).permit(:title, :description, :solution, :fix_status, :longitude, :latitude,  photos: [])
+    params.require(:issue).permit(:title, :description, :solution, :address, :fix_status, :longitude, :latitude,  photos: [])
   end
 end

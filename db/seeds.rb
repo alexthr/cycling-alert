@@ -32,6 +32,10 @@ travaux.user = alexthr
 viaduc.user = alexthr
 acces.user = visant
 
+trou.photo_urls = ["https://images.unsplash.com/photo-1528629297340-d1d466945dc5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ef92ab342dceba763781e4dd9f9b396c&auto=format&fit=crop&w=1995&q=80"]
+acces.photo_urls = ["https://images.unsplash.com/photo-1528629297340-d1d466945dc5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ef92ab342dceba763781e4dd9f9b396c&auto=format&fit=crop&w=1995&q=80"]
+
+
 
 trou.save
 croisement.save
