@@ -10,10 +10,10 @@ class IssuesController < ApplicationController
         lat: issue.latitude,
         lng: issue.longitude,
         infoWindow: { content: render_to_string(partial: "/issues/map_info_window", locals: { issue: issue }) },
-        picture: {
+        # picture: {
         # "url": view_context.image_path("logo.png"),
-        "width":  50,
-        "height": 45 }
+        # "width":  50,
+        # "height": 45 }
       }
     end
   end
