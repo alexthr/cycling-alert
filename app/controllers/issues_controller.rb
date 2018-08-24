@@ -2,7 +2,6 @@ class IssuesController < ApplicationController
   before_action :find_issue, only: [:show, :edit, :update, :destroy]
 
   def index
-
     @map_issues = Issue.where.not(latitude: nil, longitude: nil)
     @markers = @map_issues.map do |issue|
       {
@@ -10,7 +9,7 @@ class IssuesController < ApplicationController
         lng: issue.longitude,
       }
     end
-    @issues = Issue.all
+    @issues = Issue.all.order(vote_count: :desc)
   end
 
   def show
