@@ -4,13 +4,18 @@ class IssuesController < ApplicationController
   def index
 
     @map_issues = Issue.where.not(latitude: nil, longitude: nil)
-    @markers = @map_issues.map do |issue|
+    @issues = Issue.all
+    @markers = @issues.map do |issue|
       {
         lat: issue.latitude,
         lng: issue.longitude,
+        infoWindow: { content: render_to_string(partial: "/issues/map_info_window", locals: { issue: issue }) },
+        picture: {
+        # "url": view_context.image_path("logo.png"),
+        "width":  50,
+        "height": 45 }
       }
     end
-    @issues = Issue.all
   end
 
   def show
