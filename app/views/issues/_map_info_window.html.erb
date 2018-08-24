@@ -1,6 +1,6 @@
 <%= link_to issue_path(issue) do %>
 <div class="info-window">
-  <div class="card-window" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1531502774286-5e4e8e94879f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0ea85c069e155dcb584413f36d022f86&auto=format&fit=crop&w=668&q=80');">
+  <div class="card-window" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path issue.photos[0].path %>);">
   </div>
   <div class="info-window-issue-info">
     <h4><%= issue.title %></h4>
