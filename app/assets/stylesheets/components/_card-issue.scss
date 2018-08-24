@@ -18,10 +18,9 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 20px;
+  font-size: 14px;
   text-transform: uppercase;
 }
-
 .avatar {
   width: 44px;
   border-radius: 50%;
@@ -32,7 +31,6 @@
   left: 15px;
   z-index: 10;
 }
-
 .card-description {
   position: absolute;
   bottom: 10px;
@@ -42,9 +40,10 @@
   width: 100%;
 }
 .card-description h2 {
-  font-size: 15px;
+  font-size: 12px;
   font-family: 'open sans';
   color: black;
+  margin: 10px 0;
 }
 .card-description p {
   font-size: 14px;
