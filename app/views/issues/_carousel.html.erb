@@ -7,7 +7,7 @@
 <div class="carousel-inner" role="listbox">
   <% @issue.photos.each do |photo| %>
     <div class="item item-size ">
-      <%= cl_image_tag photo.path, :id => "photo-size", effect: { auto_color: 99 } %>
+      <%= cl_image_tag photo.path, effect: { auto_color: 99 }, :id => "photo-size" %>
     </div>
   <% end %>
 </div>
