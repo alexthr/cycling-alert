@@ -1,8 +1,6 @@
 <%= render 'carousel' %>
 <% sum = 0 %>
 <% @issue.votes.each { |vote| sum += vote.direction } %>
-
-
 <div class="container">
   <div class="issue-title issue-card">
     <div class="title-flex">
@@ -103,7 +101,6 @@
 
 </div>
 
-
 <style>
   .title-flex {
     display: flex;
@@ -129,26 +126,5 @@
     font-size: 30px;
     color: black;
   }
-
-  .item-size {
-    height: calc(50vh - 70px);
-    width: 100%;
-  }
-
-  #photo-size {
-    height: calc(50vh - 70px);
-    width: 100%;
-  }
-
-  .issue-title-username {
-    display: flex;
-    align-items: center;
-  }
-
-  .issue-title-username p{
-    margin-bottom: 0;
-  }
-
-
 </style>
 
