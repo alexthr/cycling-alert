@@ -19,7 +19,7 @@
     </div>
     <div class="issue-title-username">
       <p>Posted by <%= @issue.user.username %></p>
-      <%= cl_image_tag "default-avatar", class: "profile" %>
+      <%= cl_image_tag "default-avatar", class: "profile-avatar" %>
     </div>
     <div class="issue-card-status">
       <% if @issue.fix_reports.any?{ |fix_report| fix_report.user == current_user } %>
@@ -116,13 +116,13 @@
 
   .votes {
     padding: 25px 0 12.5px 0;
-    margin-left: 50px;
+    margin: 0 10px;
     display: flex;
     align-items: center;
     text-align: center;
     justify-content: space-between;
     max-width: 125px;
-    flex: 1 1 100px;
+    flex: 1 1 110px;
   }
 
   .votes i {

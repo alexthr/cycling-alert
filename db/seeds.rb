@@ -6,8 +6,11 @@ puts 'Creating issues and one user...'
 
 sanchinho = User.new(username: 'sanchinho', password: '123456', email: 'yannick.sanchez.guasch@gmail.com')
 sanchinho.save
+carine = User.create(username: "carineLC", email: "carine.le.charles@gmail.com", password: "123456")
+alexthr = User.create(username: "alexthr", email: "alex.thoreux@gmail.com", password: "123456")
+visant = User.create(username: "visant", email: "visant@gmail.com", password: "123456")
 
-puts 'User created !'
+puts 'Users created !'
 
 trou = Issue.new(title: 'Trou dans la route', description: 'Ce trou est apparu récemment et il oblige à tous les cyclistes à contournement.', solution: 'Boucher le trou.', address: "107, cours Balguerie Stuttenberg, Bordeaux")
 croisement = Issue.new(title: 'Croisement dangereux', description: 'Les voitures ne voient pas les cyclistes quand elles tournent, risque de se faire écraser.', solution: 'Modifier le carrefour.', address: "148, cours Balguerie Stuttenberg, Bordeaux")
@@ -19,18 +22,15 @@ travaux = Issue.new(title: 'Travaux sur la route', description: 'On ne peut plus
 viaduc = Issue.new(title: 'Viaduc effondré', description: 'Je ne peux plus circuler.', solution: 'Réparation urgente.', address: "10, rue du 14 juillet, le Pré-Saint-Gervais")
 acces = Issue.new(title: 'Pas d acces pour quitter la piste cyclable', description: 'Quand je prends cette piste cyclable, je ne peux pas la quitter sans traverser les grands boulevards, cest super dangereux.', solution: 'Construire une voix dacces de type pont pour les vélos.', address: "14, rue de l'Odéon, Paris")
 
-carine = User.create(username: "carineLC", email: "carine.le.charles@gmail.com", password: "123456")
-alexthr = User.create(username: "alexthr", email: "alex.thoreux@gmail.com", password: "123456")
 
 trou.user = sanchinho
 croisement.user = sanchinho
-piste.user = sanchinho
 eclairage.user = carine
 dangereux.user = carine
-sens_interdit.user = carine
+sens_interdit.user = visant
 travaux.user = alexthr
 viaduc.user = alexthr
-acces.user = alexthr
+acces.user = visant
 
 
 trou.save
