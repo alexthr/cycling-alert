@@ -1,31 +1,37 @@
 <div class="navbar navbar-default">
-    <div class="navbar-display">
-      <div class="navbar-btn-menu navbar-left">
+   <div class="navbar-display">
+    <div class="navbar-btn-menu navbar-left">
+      <% if user_signed_in? %>
         <i class="fas fa-bars" data-toggle="collapse" data-target="#open-menu" aria-expanded="false"></i>
-      </div>
-      <div class="navbar-logo">
-        <%= link_to root_path, class: "navbar-logo" do %>
-          <%= image_tag "logobike.png", height: 60 %>
-        <% end %>
-      </div>
+      <% end %>
+    </div>
+    <div class="navbar-logo">
+      <%= link_to root_path, class: "navbar-logo" do %>
+        <%= image_tag "logobike.png", height: 60 %>
+      <% end %>
+    </div>
     <div class="navbar-btn-maplist navbar-right">
+      <% if current_page?(root_path) || current_page?(issues_path) %>
         <i class="fas fa-list-ul hide" id="btn-card"><div><h6 class="h6-btn">Liste</h6></div></i>
         <i class="fas fa-map" id="btn-map"><div><h6 class="h6-btn">Carte</h6></div></i>
-      </div>
-      </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse" id="open-menu">
-      <ul class="navbar-menu navbar-nav nav">
-        <li><%= link_to issues_path do %>
-              <i class="fas fa-user"></i> My profile
-            <% end  %>
-        </li>
-        <li><%= link_to destroy_user_session_path, method: :delete do %>
-              <i class="fas fa-sign-out-alt"></i> <%= t(".sign_out", default: "Log out") %>
-            <% end %>
-        </li>
-      </ul>
+      <% end %>
+      <% unless user_signed_in? %>
+        <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-right" %>
+      <% end %>
     </div>
+  </div>
+  <div class="collapse" id="open-menu">
+    <ul class="navbar-menu navbar-nav nav">
+      <li><%= link_to issues_path do %>
+            <i class="fas fa-user"></i> My profile
+          <% end  %>
+      </li>
+      <li><%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fas fa-sign-out-alt"></i> <%= t(".sign_out", default: "Log out") %>
+          <% end %>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <style>
