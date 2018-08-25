@@ -29,6 +29,7 @@ if(btnMap) {
     btnCard.classList.remove("hide") ;
     cards.classList.add("hide");
     map.classList.remove("hide");
+    map.style.display = "block";
     drawMap(map);
   });
 }
@@ -39,5 +40,6 @@ if(btnCard) {
     btnMap.classList.remove("hide") ;
     map.classList.add("hide");
     cards.classList.remove("hide");
+    map.style.display = "none";
   });
 }
