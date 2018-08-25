@@ -5,10 +5,17 @@ User.destroy_all
 puts 'Creating issues and one user...'
 
 sanchinho = User.new(username: 'sanchinho', password: '123456', email: 'yannick.sanchez.guasch@gmail.com')
+sanchinho.avatar_url = "https://avatars1.githubusercontent.com/u/7702269?v=4"
 sanchinho.save
-carine = User.create(username: "carineLC", email: "carine.le.charles@gmail.com", password: "123456")
-alexthr = User.create(username: "alexthr", email: "alex.thoreux@gmail.com", password: "123456")
-visant = User.create(username: "visant", email: "visant@gmail.com", password: "123456")
+carine = User.new(username: "carineLC", email: "carine.le.charles@gmail.com", password: "123456")
+carine.avatar_url = "https://avatars0.githubusercontent.com/u/39913570?v=4"
+carine.save
+alexthr = User.new(username: "alexthr", email: "alex.thoreux@gmail.com", password: "123456")
+alexthr.avatar_url = "https://avatars0.githubusercontent.com/u/40071634?v=4"
+alexthr.save
+visant = User.new(username: "visant", email: "visant@gmail.com", password: "123456")
+visant.avatar_url = "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/nw5ey8f0ze2hxaecqvt1.jpg"
+visant.save
 
 puts 'Users created !'
 
@@ -24,12 +31,12 @@ acces = Issue.new(title: 'Bite gênante', description: 'Encore une bite à évit
 
 
 trou.user = sanchinho
-croisement.user = sanchinho
-eclairage.user = carine
+croisement.user = carine
+eclairage.user = alexthr
 dangereux.user = carine
 sens_interdit.user = visant
 travaux.user = alexthr
-viaduc.user = alexthr
+viaduc.user = sanchinho
 acces.user = visant
 
 trou.photo_urls = ["https://res.cloudinary.com/alexthr/image/upload/v1535107482/seed4.jpg"]

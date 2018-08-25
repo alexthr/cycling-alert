@@ -15,7 +15,7 @@
     </div>
     <div class="issue-title-username">
       <p>Posted by <%= @issue.user.username %></p>
-      <%= cl_image_tag "default-avatar", class: "profile-avatar" %>
+      <%= cl_image_tag @issue.user.avatar.path, class: "profile-avatar" %>
     </div>
     <div class="issue-card-status">
       <% if @issue.fix_reports.any?{ |fix_report| fix_report.user == current_user } %>
@@ -40,5 +40,5 @@
   <% end %>
 
   <%= render "comment-thread" %>
-  
+
 </div>

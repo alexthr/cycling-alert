@@ -1,6 +1,6 @@
 <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path issue.photos[0].path, effect: { auto_color: 99 } %>);">
   <div class="card-title"><%= issue.title %></div>
-  <img src='https://kitt.lewagon.com/placeholder/users/sanchinho' class="avatar"/>
+  <%= cl_image_tag issue.user.avatar.path, class: "avatar" %>
   <div class="card-description">
     <h2><%= issue.description.split.first(10).join(' ') %>...</h2>
     <h2><strong><%= pluralize issue.vote_count, 'vote' %></strong></h2>
