@@ -1,0 +1,72 @@
+<div class="navbar-wagon container">
+
+  <!-- link_to root_path A CHANGER -->
+  <%= link_to root_path, class: "align-left" do %>
+    <%= image_tag "gear.png", height: 40 %>
+  <% end %>
+
+  <!-- Logo -->
+  <%= link_to root_path, class: "navbar-wagon-brand align-center" do %>
+    <%= image_tag "logobike.png", height: 55 %>
+  <% end %>
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm align-right">
+    <% if user_signed_in? %>
+
+      <!-- Links when logged in -->
+
+
+      <!-- Avatar with dropdown menu -->
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <% else %>
+      <!-- Login link (when logged out) -->
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
+  </div>
+
+  <!-- Dropdown list appearing on mobile only -->
+  <div class="navbar-wagon-item">
+    <% if current_page?(root_path) %>
+        <i class="fas fa-list-ul hide" id="btn-card"><div><h6 class="h6-btn">Liste</h6></div></i>
+        <i class="fas fa-map" id="btn-map"><div><h6 class="h6-btn">Carte</h6></div></i>
+    <% else %>
+      <div class="dropdown">
+        <i class="fa fa-bars dropdown-toggle color" data-toggle="dropdown"></i>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<style>
+
+.h6-btn {
+  margin-top: 0px;
+}
+
+.navbar-wagon-item {
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+</style>
+
+
