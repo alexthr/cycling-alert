@@ -1,28 +1,25 @@
 <div class="container">
-  <div class="flip-container">
-    <div class="front face">
-      <div class="card-display" id="cards">
-        <div class="row">
-          <% @issues.each do |issue| %>
-            <div class="col-xs-12 col-sm-12 col-md-6">
-              <%= render 'card', issue: issue %>
-            </div>
-          <% end %>
+  <div class="card-display" id="cards">
+    <div class="row">
+      <% @issues.each do |issue| %>
+        <div class="col-xs-12 col-sm-12 col-md-6">
+          <%= render 'card', issue: issue %>
         </div>
-      </div>
-    </div>
-    <div class="back face">
-      <div
-        id="map"
-        style="width: 100%;
-        height: 600px;"
-        data-markers="<%= @markers.to_json %>"
-      ></div>
+      <% end %>
     </div>
   </div>
-  <%= link_to new_issue_path, class: "btn-new" do %>
-    <i class="fas fa-plus"></i>
-  <% end %>
 </div>
+
+<div
+id="map"
+style="width: 100%;
+height: calc(100vh - 70px)"
+data-markers="<%= @markers.to_json %>"
+> </div>
+
+<%= link_to new_issue_path, class: "btn-new" do %>
+<i class="fas fa-plus"></i>
+<% end %>
+
 
 
