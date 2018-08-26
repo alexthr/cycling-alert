@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="my-profile-avatar issue-card">
+    <%= cl_image_tag @user.avatar.path, class: "profile-avatar-big" %>
+    <h1><strong><%= @user.username %></strong></h1>
+  </div>
+  <div class="my-profile-stats issue-card">
+    <h4><%= @user.issues.count %> issues created</h4>
+    <h4><%= @user.comments.count %> comments created</h4>
+  </div>
+</div>
+
+<style>
+.my-profile-avatar {
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.my-profile-avatar h1 {
+  margin-top: 15px;
+}
+
+.my-profile-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+</style>

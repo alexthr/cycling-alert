@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     resources :votes, only: [:new, :create, :edit, :update, :destroy]
     resources :fix_reports, only: [:new, :create, :edit, :update]
   end
-  resources :user, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :users, only: [:show, :new, :create, :edit, :update, :destroy]
 end

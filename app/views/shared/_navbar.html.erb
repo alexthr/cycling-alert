@@ -22,7 +22,7 @@
   </div>
   <div class="collapse" id="open-menu">
     <ul class="navbar-menu navbar-nav nav">
-      <li><%= link_to issues_path do %>
+      <li><%= link_to user_path(current_user) do %>
             <i class="fas fa-user"></i> My profile
           <% end  %>
       </li>
@@ -33,9 +33,3 @@
     </ul>
   </div>
 </div>
-
-<script>
-  document.querySelector( "#nav-toggle" ).addEventListener( "click", function() {
-  this.classList.toggle( "active" );
-});
-</script>
