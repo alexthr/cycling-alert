@@ -50,7 +50,18 @@
   color: #6C91C2;
   width: 40px;
   cursor: pointer;
-  font-size: 25px
+  font-size: 25px;
+}
+
+.navbar-right {
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.navbar-right:hover {
+  text-decoration: none;
+  opacity: 0.5;
 }
 
 .navbar-btn-maplist h6{

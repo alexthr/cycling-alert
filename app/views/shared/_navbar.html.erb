@@ -2,7 +2,7 @@
    <div class="navbar-display">
     <div class="navbar-btn-menu navbar-left">
       <% if user_signed_in? %>
-        <a id="nav-toggle" href="#" data-toggle="collapse" data-target="#open-menu" aria-expanded="false"><span></span></a>
+        <div id="nav-toggle" data-toggle="collapse" data-target="#open-menu" aria-expanded="false"><span></span></div>
       <% end %>
     </div>
     <div class="navbar-logo">
@@ -10,8 +10,8 @@
         <%= image_tag "logobike.png", height: 55 %>
       <% end %>
     </div>
-    <div class="navbar-btn-maplist navbar-right">
-      <% if current_page?(root_path) || current_page?(issues_path) %>
+    <div class="navbar-btn-maplist">
+      <% if (current_page?(root_path) || current_page?(issues_path)) && user_signed_in? %>
         <i class="fas fa-list-ul hide" id="btn-card"><div><h6 class="h6-btn">Liste</h6></div></i>
         <i class="fas fa-map" id="btn-map"><div><h6 class="h6-btn">Carte</h6></div></i>
       <% end %>
@@ -22,14 +22,16 @@
   </div>
   <div class="collapse" id="open-menu">
     <ul class="navbar-menu navbar-nav nav">
-      <li><%= link_to user_path(current_user) do %>
-            <i class="fas fa-user"></i> My profile
-          <% end  %>
-      </li>
-      <li><%= link_to destroy_user_session_path, method: :delete do %>
-            <i class="fas fa-sign-out-alt"></i> <%= t(".sign_out", default: "Log out") %>
-          <% end %>
-      </li>
+      <% if user_signed_in? %>
+        <li><%= link_to myprofile_path(current_user) do %>
+              <i class="fas fa-user"></i> <%= t(".profile", default: "My profile") %>
+            <% end  %>
+        </li>
+        <li><%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt"></i> <%= t(".sign_out", default: "Log out") %>
+            <% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>

@@ -1,7 +1,7 @@
 const btnNavbar = document.getElementById("nav-toggle");
-
+console.log(btnNavbar)
 if(btnNavbar) {
   btnNavbar.addEventListener("click", (event) => {
-    event.classList.toggle("active");
+    event.currentTarget.classList.toggle("active");
   });
 }

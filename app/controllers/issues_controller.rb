@@ -1,5 +1,6 @@
 class IssuesController < ApplicationController
   before_action :find_issue, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index]
 
   def index
     @map_issues = Issue.where.not(latitude: nil, longitude: nil)

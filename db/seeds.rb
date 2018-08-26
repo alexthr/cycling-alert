@@ -28,7 +28,7 @@ dangereux = Issue.new(title: 'Stationnement gênant', description: 'Cette piste 
 sens_interdit = Issue.new(title: "Poteau gênant", description: "Un poteau a poussé au beau milieu de la piste, c'est embêtant", solution: 'Déplacer la piste ou le poteau.', address: "9, rue Rolland, Bordeaux", vote_count: 1)
 travaux = Issue.new(title: 'Grillage sur la piste', description: 'On ne peut plus emprunter ce chemin à cause du grillage et il n y a pas de signalement.', solution: 'Avertir les cyclistes avec un panneau.', address: "10, rue villa Gaudelet, Paris")
 viaduc = Issue.new(title: 'Champ de bosses', description: 'Je ne peux plus circuler.', solution: 'Aplanir la route.', address: "10, rue du 14 juillet, le Pré-Saint-Gervais", vote_count: 3)
-acces = Issue.new(title: 'Bite gênante', description: 'Encore une bite à éviter !.', solution: "Arrêter l'alcool.", address: "14, rue de l'Odéon, Paris", vote_count: 6)
+acces = Issue.new(title: 'Bite gênante', description: 'Encore une bite à éviter !', solution: "Arrêter l'alcool.", address: "14, rue de l'Odéon, Paris", vote_count: 6)
 
 trou.user = sanchinho
 croisement.user = carine
