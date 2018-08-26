@@ -94,15 +94,27 @@
   padding-top: 25px;
 }
 
-.votes {
+.issue-title {
+ flex: 1 1 auto;
+}
+
+.issue-votes {
   padding: 25px 0 12.5px 0;
   margin: 0 10px;
   display: flex;
   align-items: center;
   text-align: center;
-  justify-content: space-between;
-  max-width: 125px;
-  flex: 1 1 110px;
+  justify-content: center;
+  flex: 0 0 10%;
+  font-size: 35px;
+}
+
+.issue-votes-arrow {
+  margin: 0 5px;
+}
+
+.issue-votes p{
+  margin-bottom: 0;
 }
 
 .votes i {
