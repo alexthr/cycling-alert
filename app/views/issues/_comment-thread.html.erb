@@ -3,7 +3,7 @@
     <% @comments.first(3).each do |comment| %>
     <div class="comment">
       <div class="comment-user">
-        <%= cl_image_tag "default-avatar", class: "comment-avatar" %>
+        <%= cl_image_tag comment.user.avatar.path, class: "comment-avatar" %>
         <span><strong><%= comment.user.username %></strong></span>
         <% time_since_post = (DateTime.now - DateTime.parse(comment.created_at.to_s)) %>
         <% if time_since_post > 1 %>
@@ -25,7 +25,7 @@
     <% @comments.drop(3).each do |comment| %>
     <div class="comment">
       <div class="comment-user">
-        <%= cl_image_tag "default-avatar", class: "comment-avatar" %>
+        <%= cl_image_tag comment.user.avatar.path, class: "comment-avatar" %>
         <span><strong><%= comment.user.username %></strong></span>
         <% time_since_post = (DateTime.now - DateTime.parse(comment.created_at.to_s)) %>
         <% if time_since_post > 1 %>

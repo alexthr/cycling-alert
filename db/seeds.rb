@@ -88,7 +88,7 @@ dangereux.comments = [comment10]
 
 comment11 = Comment.create(content: "Ce poteau est dangereux car il est en bas d'une descente.", user_id: alexthr.id)
 comment12 = Comment.create(content: "Exact! Un soir en pleine nuit, je ne l'avais pas vu et je l'ai pris en pleine face.", user_id: carine.id)
-comment13 = Comment.create(content: "Je'ai fait la même..'", user_id: visant.id)
+comment13 = Comment.create(content: "J'ai fait la même..'", user_id: visant.id)
 comment14 = Comment.create(content: "Que fait la mairie ?", user_id: sanchinho.id)
 sens_interdit.comments = [comment11, comment12, comment13, comment14]
 
