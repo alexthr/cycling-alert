@@ -7,7 +7,7 @@
     </div>
     <div class="navbar-logo">
       <%= link_to root_path, class: "navbar-logo" do %>
-        <%= image_tag "logobike.png", height: 60 %>
+        <%= image_tag "logobike.png", height: 55 %>
       <% end %>
     </div>
     <div class="navbar-btn-maplist navbar-right">
@@ -33,80 +33,3 @@
     </ul>
   </div>
 </div>
-
-<style>
-#open-menu {
-  z-index: 1000;
-}
-
-.navbar-menu {
-  background: rgba(248, 249, 250);
-  list-style-type: none;
-  padding: 10px;
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-  position: fixed;
-}
-
-.navbar {
-  z-index: 1000;
-  height: 70px;
-  padding: 5px 5px;
-  position: sticky;
-  top: 0;
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
-  margin-bottom: 0;
-}
-
-.navbar-btn-menu:hover {
-  opacity: 0.7;
-}
-
-.navbar-btn-menu {
-  margin: 0 15px;
-  text-align: center;
-  color: #6C91C2;
-  width: 40px;
-  cursor: pointer;
-}
-
-.navbar-btn-maplist {
-  margin: 0px 15px;
-  padding-top: 5px;
-  text-align: center;
-  color: #6C91C2;
-  width: 40px;
-  cursor: pointer;
-}
-
-.navbar-btn-maplist:hover {
-  opacity: 0.7;
-}
-
-.navbar-btn-maplist h6{
-  margin: 0;
-}
-
-.navbar-display{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.navbar-logo{
-  flex: 1 1 50px;
-  text-align: center;
-}
-
-.collapsing {
-  position: relative;
-  height: 0;
-  overflow: hidden;
-  -webkit-transition: height 0.5s ease;
-       -o-transition: height 0.5s ease;
-          transition: height 0.5s ease;
-}
-
-</style>
