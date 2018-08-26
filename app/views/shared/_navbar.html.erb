@@ -2,7 +2,7 @@
    <div class="navbar-display">
     <div class="navbar-btn-menu navbar-left">
       <% if user_signed_in? %>
-        <i class="fas fa-bars" data-toggle="collapse" data-target="#open-menu" aria-expanded="false"></i>
+        <a id="nav-toggle" href="#" data-toggle="collapse" data-target="#open-menu" aria-expanded="false"><span></span></a>
       <% end %>
     </div>
     <div class="navbar-logo">
@@ -33,3 +33,9 @@
     </ul>
   </div>
 </div>
+
+<script>
+  document.querySelector( "#nav-toggle" ).addEventListener( "click", function() {
+  this.classList.toggle( "active" );
+});
+</script>
