@@ -8,13 +8,6 @@
     $('#openCommentFormBtn').hide();
   })
 
-
-
-// const toggleAllComments = document.getElementById("toggle-all-comments");
-// const allComments = document.getElementById("all-comments");
-// const hideAllComments = document.getElementById("hide-all-comments");
-
-
 $('#toggle-all-comments').click(function(e){
   $('#all-comments').slideDown();
   $('#toggle-all-comments').hide();
@@ -26,5 +19,4 @@ $('#hide-all-comments').click(function(e) {
   $('#hide-all-comments').hide();
   $('#toggle-all-comments').show();
 });
-
 

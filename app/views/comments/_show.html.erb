@@ -1,0 +1,18 @@
+<div class="comment">
+  <div class="comment-user">
+    <%= cl_image_tag comment.user.avatar.path, class: "comment-avatar" %>
+    <span><strong><%= comment.user.username %></strong></span>
+    <% time_since_post = (DateTime.now - DateTime.parse(comment.created_at.to_s)) %>
+    <% if time_since_post > 1 %>
+    <p><em>Posted <%= pluralize time_since_post.to_i, 'day' %> ago</em></p>
+    <% elsif time_since_post < 1 && time_since_post > 0.04 %>
+    <p><em>Posted <%= pluralize (time_since_post * 24).to_i, 'hour' %> ago</em></p>
+    <% elsif time_since_post < 0.04 %>
+    <p><em>Posted <%= pluralize (time_since_post * 24 * 60).to_i, 'minute' %> ago</em></p>
+    <% end %>
+  </div>
+  <p><%= comment.content %></p>
+  <%= link_to comment_path(comment), method: "delete", remote: true, class: "delete-comment" do %>
+    <i class="fas fa-trash-alt"></i>
+  <% end %>
+</div>

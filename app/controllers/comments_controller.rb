@@ -9,9 +9,15 @@ class CommentsController < ApplicationController
     @comment = @issue.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save
-      redirect_to issue_path(@comment.issue)
+      respond_to do |format|
+        format.html { redirect_to issue_path(@issue) }
+        format.js
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render "issues/show" }
+        format.js
+      end
     end
   end
 
@@ -25,7 +31,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to issue_path(@comment.issue)
+    # redirect_to issue_path(@comment.issue)
   end
 
   private
