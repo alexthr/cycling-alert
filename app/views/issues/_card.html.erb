@@ -1,9 +1,23 @@
-<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path issue.photos[0].path, effect: { auto_color: 99 } %>);">
-  <div class="card-title"><%= issue.title %></div>
-  <%= cl_image_tag issue.user.avatar.path, class: "avatar" %>
-  <div class="card-description">
-    <h2><%= issue.description.split.first(10).join(' ') %>...</h2>
-    <h2><strong><%= pluralize issue.vote_count, 'vote' %></strong></h2>
+<div class="card">
+  <div class="card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path issue.photos[0].path, effect: { auto_color: 99 } %>);">
   </div>
-  <%= link_to '', issue_path(issue), class: "card-link" %>
+  <div class="card-info">
+    <div class="card-info-title"><h3><%= issue.title %></h3></div>
+    <div class="card-info-description">
+      <% if issue.description.split.count > 10 %>
+        <p><%= issue.description.split.first(10).join(' ') %>...</p>
+      <% else %>
+        <p><%= issue.description %></p>
+      <% end %>
+    </div>
+    <div class="card-info-stat">
+      <div class="card-info-stat-vote">
+        <i class="fas fa-caret-up card-info-icon"></i><p><%= issue.vote_count %></p>
+      </div>
+      <div class="card-info-stat-vote">
+        <i class="fas fa-comment card-info-icon"></i><p><%= issue.comments.count %></p>
+      </div>
+    </div>
+    <%= link_to '', issue_path(issue), class: "card-link" %>
+  </div>
 </div>

@@ -1,25 +1,30 @@
 <%= render 'carousel' %>
 <div class="container">
   <div class="issue-card">
-    <div class="title-flex">
-      <h3 class="issue-title"><strong><%= @issue.title %></strong></h3>
+
+    <div class="issue-card-title">
+      <div class="issue-title">
+        <h2><%= @issue.title %></h2>
+      </div>
       <div class="issue-votes">
         <%= link_to issue_votes_path(@issue, direction: 1), method: "post" do %>
-          <i class="fas fa-arrow-up issue-votes-arrow", style="color: #32B796"></i>
+          <i class="fas fa-caret-up issue-votes-arrow", style="color: #32B796"></i>
         <% end %>
-        <p style="font-size: 20px;"><%= @issue.vote_count %></p>
+        <p><%= @issue.vote_count %></p>
         <%= link_to issue_votes_path(@issue, direction: -1), method: "post" do %>
-            <i class="fas fa-arrow-down issue-votes-arrow", style="color: #E23F36"></i></i>
+          <i class="fas fa-caret-down issue-votes-arrow", style="color: #E23F36"></i>
         <% end %>
       </div>
     </div>
-    <div class="issue-title-username">
+
+    <div class="issue-card-username">
       <p>Posted by <%= @issue.user.username %></p>
       <%= cl_image_tag @issue.user.avatar.path, class: "profile-avatar" %>
     </div>
+
     <div class="issue-card-status">
       <% if @issue.fix_reports.any?{ |fix_report| fix_report.user == current_user } %>
-         <p><em> Marked as solved! </em></p>
+         <p class="issue-card-status-solved">Marked as solved!</p>
       <% else %>
         <p class="issue-status <%= @issue.fix_status.delete(" ") %>"><%= @issue.fix_status %> </p>
       <% end %>
@@ -28,13 +33,15 @@
       <% end %>
     </div>
   </div>
-  <div class="issue-card">
-    <h4>Description</h4>
+
+  <div class="issue-card issue-card-other">
+    <h3>Description</h3>
     <p><%= @issue.description %></p>
   </div>
+
   <% if @issue.solution != "" %>
-  <div class="issue-card">
-    <h4>Solution</h4>
+  <div class="issue-card issue-card-other">
+    <h3>Solution</h3>
     <p><%= @issue.solution %></p>
   </div>
   <% end %>

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
 
   devise_for :users
-   devise_scope :user do
+  devise_scope :user do
     get '/users/:id' => 'users#show', as: :myprofile
   end
   root to: "issues#index"
