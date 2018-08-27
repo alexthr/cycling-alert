@@ -14,4 +14,8 @@
     <p id="hide-all-comments"><i class="fas fa-angle-up"></i> Hide comments</p>
   <% end %>
 </div>
-<%= render "comments/form", issue: @issue, comment: @comment  %>
+
+<div id="comment-form-wrapper">
+  <%= render "comments/form", issue: @issue, comment: @comment  %>
+</div>
+

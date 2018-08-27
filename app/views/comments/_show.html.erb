@@ -1,4 +1,4 @@
-<div class="comment">
+<div data-comment-id="<%= comment.id %>" class="comment">
   <div class="comment-user">
     <%= cl_image_tag comment.user.avatar.path, class: "comment-avatar" %>
     <span><strong><%= comment.user.username %></strong></span>
@@ -12,7 +12,7 @@
     <% end %>
   </div>
   <p><%= comment.content %></p>
-  <%= link_to comment_path(comment), method: "delete", remote: true, class: "delete-comment" do %>
+  <%= link_to comment, method: "delete", remote: true, class: "delete-comment" do %>
     <i class="fas fa-trash-alt"></i>
   <% end %>
 </div>
