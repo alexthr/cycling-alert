@@ -4,7 +4,7 @@ class IssuesController < ApplicationController
 
   def index
     @map_issues = Issue.where.not(latitude: nil, longitude: nil)
-    @issues = Issue.order(vote_count: :desc).order(created_at: :desc)
+    @issues = Issue.all.order(created_at: :desc)
     @markers = @issues.map do |issue|
       {
         lat: issue.latitude,

@@ -11,4 +11,13 @@ class Issue < ApplicationRecord
 
   validates :title, :description, presence: true
 
+  def vote_count
+    votes.sum('direction')
+  end
+
+  def vote_count=(new_vote_count)
+    new_vote_count.times do
+      self.votes.create(direction: +1, user: User.first)
+    end
+  end
 end
