@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(user)
-    issues_path
+    if user.admin
+      admin_issues_path
+    else
+      issues_path
+    end
   end
 end

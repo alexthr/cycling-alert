@@ -17,7 +17,7 @@ alexthr.save
 visant = User.new(username: "visant", email: "visant@gmail.com", password: "123456")
 visant.avatar_url = "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/nw5ey8f0ze2hxaecqvt1.jpg"
 visant.save
-juppe = User.new(username: "Mairie de Bordeaux", email: "juppe@gmail.com", password: "123456", admin: true)
+juppe = User.new(username: "Mairie de Bordeaux", email: "juppe@gmail.com", password: "123456", city: "Bordeaux", admin: true)
 juppe.avatar_url = "http://www.bordeaux.fr/images/ebx/fr/organisme/984/format7/logo_mairie_bordeaux_1.png"
 juppe.save
 
