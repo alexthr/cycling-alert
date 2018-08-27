@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_attachment :avatar
+
   has_many :issues
   has_many :comments
   has_many :fix_reports

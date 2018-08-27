@@ -1,3 +1,5 @@
+// CSS comment
+
 .comment-avatar {
   width: 50px;
   height: 50px;
@@ -29,6 +31,7 @@
   right: 20px;
 }
 
+// CSS carousel
 .item-size {
   height: calc(50vh - 70px);
   width: 100%;
@@ -39,6 +42,7 @@
   width: 100%;
 }
 
+// CSS show
 .issue-card {
   background: white;
   border: 1px solid #d3d3d3;
@@ -48,14 +52,36 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
+.issue-card-status {
+  display: flex;
+  align-items: center;
+}
+
+.issue-card-status-solved {
+  font-weight: lighter;
+  font-size: 16px;
+  color: $green;
+}
+
+.issue-status {
+  font-weight: lighter;
+  font-size: 16px;
+}
+
 .change-status {
   margin-left: 10px;
-  color: $blue;
+  color: #5b5a5a;
   text-decoration: none;
+  font-size: 18px;
+  border: 1px solid #999999;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 .change-status:hover {
-  opacity: 0.8;
+  cursor: pointer;
+  color: #999999;
   text-decoration: none;
 }
 
@@ -63,72 +89,6 @@
   opacity: 0.8;
   text-decoration: none;
 }
-
-.issue-card-status {
-  display: flex;
-  align-items: center;
-}
-
-.issue-title-username {
-  display: flex;
-  align-items: center;
-  font-weight: lighter;
-  font-style: italic;
-}
-
-.issue-title-username p{
-  margin-bottom: 0;
-}
-
-.issue-status {
-  font-weight: lighter;
-  font-style: italic;
-}
-
-.title-flex {
-  display: flex;
-}
-
-.title-flex h2 {
-  margin-top: 0;
-  padding-top: 25px;
-}
-
-.votes {
-  padding: 25px 0 12.5px 0;
-  margin: 0 10px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: space-between;
-  max-width: 125px;
-  flex: 1 1 110px;
-}
-
-.votes i {
-  font-size: 30px;
-  color: black;
-}
-
-.item-size {
-  height: calc(50vh - 70px);
-  width: 100%;
-}
-
-#photo-size {
-  height: calc(50vh - 70px);
-  width: 100%;
-}
-
-.issue-title-username {
-  display: flex;
-  align-items: center;
-}
-
-.issue-title-username p{
-  margin-bottom: 0;
-}
-
 
 .pending {
   color: $red;
@@ -140,4 +100,67 @@
 
 .resolved {
   color: $green;
+}
+
+.issue-card-username {
+  display: flex;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+.issue-card-username p{
+  margin-bottom: 0;
+  color: #999999;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: lighter;
+}
+
+.issue-card-title {
+  display: flex;
+  justify-content: center;
+}
+
+.issue-title {
+ flex: 1 1 auto;
+}
+
+.issue-title h2 {
+  font-weight: bold;
+  font-size: 28px;
+  color: #5b5a5a;
+}
+
+.issue-votes {
+  margin: 0 10px;
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex: 0 0 10%;
+  font-size: 35px;
+}
+
+.issue-votes p {
+  color: #999999;
+  font-size: 28px;
+  margin-bottom: 0;
+  font-weight: lighter;
+}
+
+.issue-votes-arrow {
+  margin: 0 5px;
+  font-size: 36px;
+}
+
+.issue-card-other p {
+  color: #999999;
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.issue-card-other h3 {
+  color: #5b5a5a;
+  font-size: 20px;
 }

@@ -1,9 +1,10 @@
 class IssuesController < ApplicationController
   before_action :find_issue, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index]
 
   def index
     @map_issues = Issue.where.not(latitude: nil, longitude: nil)
-    @issues = Issue.all.order(vote_count: :desc)
+    @issues = Issue.order(vote_count: :desc).order(created_at: :desc)
     @markers = @issues.map do |issue|
       {
         lat: issue.latitude,
