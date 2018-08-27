@@ -66,34 +66,34 @@ acces.save
 
 puts 'Issues created!'
 
-comment1 = Comment.create(content: "Je valide ce problème! J'y passe tous les matins.", user_id: alexthr.id)
-comment2 = Comment.create(content: "Je n'en peux plus de ces bites!", user_id: carine.id)
+comment1 = Comment.create(content: "Je valide ce problème ! J'y passe tous les matins.", user_id: alexthr.id)
+comment2 = Comment.create(content: "Je n'en peux plus de ces bites !", user_id: carine.id)
 trou.comments = [comment1, comment2]
 
 comment3 = Comment.create(content: "Un coup de tronçonneuse et ça repart.", user_id: sanchinho.id)
 comment4 = Comment.create(content: "J'avais oublié ce buisson l'autre jour et je suis tombé dedans à pleine vitesse.", user_id: sanchinho.id)
 comment5 = Comment.create(content: "Je valide ! On ne voit même plus la piste cyclable.", user_id: alexthr.id)
-comment6 = Comment.create(content: "Couper lui la touffe!", user_id: visant.id)
+comment6 = Comment.create(content: "Coupez-lui la touffe!", user_id: visant.id)
 croisement.comments =  [comment3, comment4, comment5, comment6]
 
 piste.comments = [comment6]
 
-comment7 = Comment.create(content: "Ces travaux durent depuis plusieurs mois..", user_id: carine.id)
+comment7 = Comment.create(content: "Ces travaux durent depuis plusieurs mois...", user_id: carine.id)
 comment8 = Comment.create(content: "Juppé à la rescousse!", user_id: sanchinho.id)
 comment9 = Comment.create(content: "Il y a une piste cyclable qui contourne les travaux si vous prenez la rue à droite.", user_id: visant.id)
 eclairage.comments = [comment7, comment8, comment9]
 
-comment10 = Comment.create(content: "Je valide!", user_id: sanchinho.id)
+comment10 = Comment.create(content: "Je valide !", user_id: sanchinho.id)
 dangereux.comments = [comment10]
 
 comment11 = Comment.create(content: "Ce poteau est dangereux car il est en bas d'une descente.", user_id: alexthr.id)
-comment12 = Comment.create(content: "Exact! Un soir en pleine nuit, je ne l'avais pas vu et je l'ai pris en pleine face.", user_id: carine.id)
+comment12 = Comment.create(content: "Exact ! Un soir en pleine nuit, je ne l'avais pas vu et je l'ai pris en pleine face.", user_id: carine.id)
 comment13 = Comment.create(content: "J'ai fait la même..'", user_id: visant.id)
 comment14 = Comment.create(content: "Que fait la mairie ?", user_id: sanchinho.id)
 sens_interdit.comments = [comment11, comment12, comment13, comment14]
 
-comment15 = Comment.create(content: "Mieux que les montagne russes!", user_id: sanchinho.id)
-comment16 = Comment.create(content: "Il ne faut pas avoir le mal de mer!", user_id: carine.id)
+comment15 = Comment.create(content: "Mieux que les montagnes russes !", user_id: sanchinho.id)
+comment16 = Comment.create(content: "Il ne faut pas avoir le mal de mer !", user_id: carine.id)
 viaduc.comments = [comment15, comment16]
 
 puts 'Comments created!'
