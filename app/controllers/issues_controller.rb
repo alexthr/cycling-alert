@@ -30,6 +30,7 @@ class IssuesController < ApplicationController
   def create
     @issue = Issue.new(issue_params)
     @issue.user = current_user
+    @issue.city = Geocoder.search([@issue.latitude, @issue.longitude]).first.city
     if @issue.save
       redirect_to issue_path(@issue)
     else
@@ -45,6 +46,8 @@ class IssuesController < ApplicationController
   def destroy
 
   end
+
+
 
   private
 
