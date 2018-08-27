@@ -19,7 +19,7 @@
 
     <div class="issue-card-username">
       <p>Posted by <%= @issue.user.username %></p>
-      <%= cl_image_tag @issue.user.avatar.path, class: "profile-avatar" %>
+      <%= cl_image_tag cl_image_tag_or_not(@issue.user.avatar), class: "profile-avatar" %>
     </div>
 
     <div class="issue-card-status">

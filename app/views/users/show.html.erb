@@ -1,6 +1,6 @@
 <div class="container">
   <div class="my-profile-avatar issue-card">
-    <%= cl_image_tag @user.avatar.path, class: "profile-avatar-big" %>
+    <%= cl_image_tag cl_image_tag_or_not(@user.avatar), class: "profile-avatar-big" %>
     <h1><strong><%= @user.username %></strong></h1>
   </div>
   <div class="my-profile-stats issue-card">
