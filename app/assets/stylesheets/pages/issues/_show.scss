@@ -154,6 +154,16 @@
   font-size: 36px;
 }
 
+.issue-votes-arrow:hover {
+  transform: scale(1.3);
+}
+
+.voted {
+  transform: scale(1.3);
+  color: black;
+
+}
+
 .issue-card-other p {
   color: #999999;
   font-size: 16px;

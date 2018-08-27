@@ -7,12 +7,18 @@
         <h2><%= @issue.title %></h2>
       </div>
       <div class="issue-votes">
-        <%= link_to issue_votes_path(@issue, direction: 1), method: "post" do %>
+        <% if @issue.votes.any? { |vote| vote.user == current_user } %>
           <i class="fas fa-caret-up issue-votes-arrow", style="color: #32B796"></i>
-        <% end %>
-        <p><%= @issue.vote_count %></p>
-        <%= link_to issue_votes_path(@issue, direction: -1), method: "post" do %>
+          <p data-issue-id="<%= @issue.id %>" id="vote-count"><%= @issue.vote_count %></p>
           <i class="fas fa-caret-down issue-votes-arrow", style="color: #E23F36"></i>
+        <% else %>
+          <%= link_to issue_votes_path(@issue, direction: 1), method: "post", id: "upvote", remote: true do %>
+            <i id="upvote" class="fas fa-caret-up issue-votes-arrow", style="color: #32B796"></i>
+          <% end %>
+          <p data-issue-id="<%= @issue.id %>" id="vote-count"><%= @issue.vote_count %></p>
+          <%= link_to issue_votes_path(@issue, direction: -1), method: "post", id: "downvote", remote: true do %>
+            <i class="fas fa-caret-down issue-votes-arrow", style="color: #E23F36"></i>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -49,3 +55,5 @@
   <%= render "comments/comment-thread" %>
 
 </div>
+
+

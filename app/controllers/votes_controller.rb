@@ -9,18 +9,22 @@ class VotesController < ApplicationController
       @issue.update(vote_count: @issue.vote_count -= 1)
     end
     if @vote.save
-      redirect_to issue_path(@issue)
+      respond_to do |format|
+        format.html { redirect_to issue_path(@issue) }
+        format.js
+      end
     else
-      redirect_to issues_path
+      respond_to do |format|
+        format.html { render "issues/show" }
+        format.js
+      end
     end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
+  def vote_count(issue)
+    @issue = Issue.find(params[:issue_id])
+    sum = 0
+    @issue.votes.each { |vote| sum += vote.direction }
+    return sum;
   end
 end
