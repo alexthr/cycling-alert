@@ -6,10 +6,10 @@
       <% end %>
     </div>
     <div class="navbar-logo">
-      <% if current_user.admin %>
+      <% if user_signed_in? && current_user.admin %>
         <%= link_to admin_issues_path, class: "navbar-logo" do %>
           <%= image_tag "logobike.png", height: 55 %>
-        <% end %>
+          <% end %>
       <% else %>
         <%= link_to root_path, class: "navbar-logo" do %>
           <%= image_tag "logobike.png", height: 55 %>

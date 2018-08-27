@@ -43,3 +43,23 @@ if(btnCard) {
     map.style.display = "none";
   });
 }
+
+
+const map2 = document.getElementById('stickymap');
+function drawMap(mapE) {
+if (mapE) {
+  const sticky = new GMaps({ el: '#stickymap', lat: 0, lng: 0 });
+  const mkers = JSON.parse(mapE.dataset.markers);
+  sticky.addMarkers(markers);
+  if (markers.length === 0) {
+    sticky.setZoom(2);
+  } else if (markers.length === 1) {
+    sticky.setCenter(markers[0].lat, markers[0].lng);
+    sticky.setZoom(14);
+  } else {
+    sticky.fitLatLngBounds(markers);
+    }
+  }
+}
+  map2.style.display = "block";
+  drawMap(map2);

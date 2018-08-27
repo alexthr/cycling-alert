@@ -12,11 +12,9 @@
 
 <div
 id="map"
-style="width: 100%;
-height: calc(100vh - 70px);
-display: none"
 data-markers="<%= @markers.to_json %>"
-> </div>
+>
+</div>
 
 <%= link_to new_issue_path, class: "btn-new" do %>
 <i class="fas fa-plus"></i>
