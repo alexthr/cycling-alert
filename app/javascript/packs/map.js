@@ -46,20 +46,20 @@ if(btnCard) {
 
 
 const map2 = document.getElementById('stickymap');
-function drawMap(mapE) {
+function displayMap(mapE) {
 if (mapE) {
   const sticky = new GMaps({ el: '#stickymap', lat: 0, lng: 0 });
-  const mkers = JSON.parse(mapE.dataset.markers);
-  sticky.addMarkers(markers);
-  if (markers.length === 0) {
+  const mkers = JSON.parse(mapE.dataset.mkers);
+  sticky.addMarkers(mkers);
+  if (mkers.length === 0) {
     sticky.setZoom(2);
-  } else if (markers.length === 1) {
-    sticky.setCenter(markers[0].lat, markers[0].lng);
+  } else if (mkers.length === 1) {
+    sticky.setCenter(mkers[0].lat, mkers[0].lng);
     sticky.setZoom(14);
   } else {
-    sticky.fitLatLngBounds(markers);
+    sticky.fitLatLngBounds(mkers);
     }
   }
 }
   map2.style.display = "block";
-  drawMap(map2);
+  displayMap(map2);
