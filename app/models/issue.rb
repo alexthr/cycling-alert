@@ -11,4 +11,6 @@ class Issue < ApplicationRecord
 
   validates :title, :description, presence: true
 
+  enum status: { pending: 0, in_progress: 1, solved: 2 }
+
 end

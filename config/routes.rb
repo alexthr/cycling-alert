@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+  Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
 
   devise_for :users
@@ -11,5 +11,11 @@ Rails.application.routes.draw do
     resources :votes, only: [:new, :create, :edit, :update, :destroy]
     resources :fix_reports, only: [:new, :create, :edit, :update]
   end
-
+  namespace :admin do
+    resources :issues, only: [ :index, :show ] do
+      member  do
+        get 'change_status'
+      end
+    end
+  end
 end
