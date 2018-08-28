@@ -2,10 +2,10 @@ import GMaps from 'gmaps/gmaps.js';
 import { autocomplete } from '../components/autocomplete';
 autocomplete();
 
-const map = document.getElementById('map');
+const map = document.getElementById('issue-map');
 function drawMap(mapElement) {
   if (mapElement) { // don't try to build a map if there's no div#map to inject in
-    const m = new GMaps({ el: '#map', lat: 0, lng: 0 });
+    const m = new GMaps({ el: '#issue-map', lat: 0, lng: 0 });
     const markers = JSON.parse(mapElement.dataset.markers);
     m.addMarkers(markers);
     if (markers.length === 0) {

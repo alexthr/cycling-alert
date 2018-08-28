@@ -43,7 +43,8 @@ class IssuesController < ApplicationController
   end
 
   def destroy
-
+    @issue.destroy
+    redirect_to issues_path
   end
 
 

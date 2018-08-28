@@ -54,6 +54,12 @@
 
   <%= render "comments/comment-thread" %>
 
+  <% if @issue.user == current_user %>
+    <%= link_to issue_path(@issue), method: "delete" do %>
+      <button class="button button-icon" style="background-color: #E23F36 !important"><i class="fas fa-trash-alt"></i>Delete issue</button>
+    <% end %>
+  <% end %>
+
 </div>
 
 
