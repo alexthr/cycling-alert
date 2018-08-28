@@ -61,5 +61,8 @@ if (mapE) {
     }
   }
 }
+
+if(map2) {
   map2.style.display = "block";
   displayMap(map2);
+}
