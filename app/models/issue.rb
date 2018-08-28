@@ -11,7 +11,7 @@ class Issue < ApplicationRecord
 
   validates :title, :description, presence: true
 
-  enum status: { pending: 0, in_progress: 1, solved: 2 }
+  enum fix_status: { en_attente: 0, en_cours: 1, resolu: 2 }
 
   def vote_count
     votes.sum('direction')
