@@ -3,7 +3,7 @@ class IssuesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    @issues = Issue.order(vote_count: :desc).order(created_at: :desc)
+    @issues = Issue.all.sort { |issue1, issue2| issue2.vote_count <=> issue1.vote_count }
     @markers = @issues.map do |issue|
       {
         lat: issue.latitude,

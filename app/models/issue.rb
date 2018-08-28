@@ -13,4 +13,13 @@ class Issue < ApplicationRecord
 
   enum status: { pending: 0, in_progress: 1, solved: 2 }
 
+  def vote_count
+    votes.sum('direction')
+  end
+
+  def vote_count=(new_vote_count)
+    new_vote_count.times do
+      self.votes.create(direction: +1, user: User.first)
+    end
+  end
 end
