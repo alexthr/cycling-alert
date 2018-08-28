@@ -30,12 +30,12 @@
 
     <div class="issue-card-status">
       <% if @issue.fix_reports.any?{ |fix_report| fix_report.user == current_user } %>
-         <p class="issue-card-status-solved">Marked as solved!</p>
+         <p class="issue-card-status-solved">Problème résolu</p>
       <% else %>
-        <p class="issue-status <%= @issue.fix_status.delete(" ") %>"><%= @issue.fix_status %> </p>
+        <p class="issue-status <%= @issue.fix_status.delete(" ") %>"><%= @issue.fix_status.capitalize.gsub("_", " ") %> </p>
       <% end %>
       <% unless @issue.fix_reports.count >= 3 || @issue.fix_reports.any?{ |fix_report| fix_report.user == current_user } %>
-        <p><%= link_to "Resolved?", issue_fix_reports_path(@issue), method: :post, class: "change-status", id: "status-button" %></p>
+        <p><%= link_to "Résolu ?", issue_fix_reports_path(@issue), method: :post, class: "change-status", id: "status-button" %></p>
       <% end %>
     </div>
   </div>
