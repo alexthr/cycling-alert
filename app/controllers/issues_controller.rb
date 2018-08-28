@@ -3,7 +3,6 @@ class IssuesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    @map_issues = Issue.where.not(latitude: nil, longitude: nil)
     @issues = Issue.all.sort { |issue1, issue2| issue2.vote_count <=> issue1.vote_count }
     @markers = @issues.map do |issue|
       {
@@ -30,6 +29,7 @@ class IssuesController < ApplicationController
   def create
     @issue = Issue.new(issue_params)
     @issue.user = current_user
+    @issue.city = Geocoder.search([@issue.latitude, @issue.longitude]).first.city
     if @issue.save
       redirect_to issue_path(@issue)
     else
@@ -45,6 +45,8 @@ class IssuesController < ApplicationController
   def destroy
 
   end
+
+
 
   private
 

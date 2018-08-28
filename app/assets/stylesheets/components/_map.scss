@@ -1,6 +1,20 @@
-.map-size {
+.wrapper {
+  display: flex;
   width: 100%;
-  height: 600px;
+}
+
+#map {
+  width: 100%;
+  height: calc(100vh - 70px);
+  display: none;
+}
+
+#stickymap {
+  height: calc(100vh - 70px);
+  position: sticky !important;
+  z-index: 3001;
+  top: 0 !important;
+  flex: 0 0 33%;
 }
 
 .info-window {

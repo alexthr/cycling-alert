@@ -6,12 +6,20 @@
       <% end %>
     </div>
     <div class="navbar-logo">
-      <%= link_to root_path, class: "navbar-logo" do %>
-        <%= image_tag "logobike.png", height: 55 %>
+      <% if user_signed_in? && current_user.admin %>
+        <%= link_to admin_issues_path, class: "navbar-logo" do %>
+          <%= image_tag "logobike.png", height: 55 %>
+          <% end %>
+      <% else %>
+        <%= link_to root_path, class: "navbar-logo" do %>
+          <%= image_tag "logobike.png", height: 55 %>
+        <% end %>
       <% end %>
+
+
     </div>
     <div class="navbar-btn-maplist">
-      <% if (current_page?(root_path) || current_page?(issues_path)) && user_signed_in? %>
+      <% if (current_page?(root_path) || current_page?(issues_path) || current_page?(admin_issues_path)) && user_signed_in? %>
         <i class="fas fa-list-ul hide" id="btn-card"><div><h6 class="h6-btn">Liste</h6></div></i>
         <i class="fas fa-map" id="btn-map"><div><h6 class="h6-btn">Carte</h6></div></i>
       <% end %>
