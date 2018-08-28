@@ -4,9 +4,10 @@ class IssuesController < ApplicationController
 
   def index
     # @issues = Issue.all.sort { |issue1, issue2| issue2.vote_count <=> issue1.vote_count }
-    @issues = Issue.select(', (select sum(direction) from votes where issue_id = issues.id) as total')
+    @issues = Issue.select('*, (select sum(direction) from votes where issue_id = issues.id) as total')
    .order('total, created_at desc NULLS LAST')
-    @issues = Issue.where(city: query_city) if query_city.present?
+
+    # @issues = Issue.where(city: query_city) if query_city.present?
     @issues = Issue.order(fix_status: :desc) if query_status.present?
 
     @markers = @issues.map do |issue|
@@ -54,6 +55,11 @@ class IssuesController < ApplicationController
   def find_issue
     @issue = Issue.find(params[:id])
   end
+
+  def query_params
+    params.require(:query).permit(:fix_status)
+  end
+
 
   def issue_params
     params.require(:issue).permit(:title, :description, :solution, :address, :fix_status, :longitude, :latitude,  photos: [])

@@ -2,8 +2,8 @@
 <div class="wrapper">
     <div class="container">
       <div class="select"><h6>Trier en fonction de :</h6>
-          <%= simple_form_for :issue, url: issues_path, method: :get do |f| %>
-          <%= f.input :fix_status, placeholder: 'résolu', label: '' %>
+          <%= simple_form_for :query, url: issues_path, method: :get do |f| %>
+          <%= f.input :fix_status, as: :radio_buttons, collection: {'Par statut' => :fix_status, 'Par vote' => :vote_count, 'Par date' => :date}, placeholder: 'résolu', label: '' %>
           <%= f.button :submit %>
       <% end %>
     </div>
