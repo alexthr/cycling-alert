@@ -4,8 +4,8 @@
   <div class="card-info">
     <div class="card-info-title"><h3><%= issue.title %></h3></div>
     <div class="card-info-description">
-      <% if issue.description.split.count > 10 %>
-        <p><%= issue.description.split.first(10).join(' ') %>...</p>
+      <% if issue.description.split.count > 9 %>
+        <p><%= issue.description.split.first(9).join(' ') %>...</p>
       <% else %>
         <p><%= issue.description %></p>
       <% end %>
