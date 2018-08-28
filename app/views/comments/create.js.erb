@@ -1,0 +1,16 @@
+function refreshForm(innerHTML) {
+  const newCommentForm = document.getElementById('comment-form-wrapper');
+  newCommentForm.innerHTML = innerHTML;
+}
+
+function addReview(commentHTML) {
+  const comments = document.getElementById('top-comments');
+  comments.insertAdjacentHTML('afterbegin', commentHTML);
+}
+
+<% if @comment.errors.any? %>
+  refreshForm('<%= j render "comments/form", issue: @issue, comment: @comment %>');
+<% else %>
+  addReview('<%= j render "comments/show", comment: @comment %>');
+  refreshForm('<%= j render "comments/form", issue: @issue, comment: Comment.new %>');
+<% end %>

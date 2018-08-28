@@ -1,0 +1,21 @@
+<div class="comment-thread">
+  <div id="top-comments">
+    <% @comments.first(3).each do |comment| %>
+      <%= render "comments/show", comment: comment %>
+    <% end %>
+  </div>
+  <div id="all-comments">
+    <% @comments.drop(3).each do |comment| %>
+      <%= render "comments/show", comment: comment %>
+    <% end %>
+  </div>
+  <% if @comments.size > 3 %>
+    <p id="toggle-all-comments"><i class="fas fa-angle-down"></i> See all comments</p>
+    <p id="hide-all-comments"><i class="fas fa-angle-up"></i> Hide comments</p>
+  <% end %>
+</div>
+
+<div id="comment-form-wrapper">
+  <%= render "comments/form", issue: @issue, comment: @comment  %>
+</div>
+

@@ -1,0 +1,8 @@
+<button id="openCommentFormBtn" class="button button-icon"><i class="fas fa-comments"></i>Add a comment</button>
+<div id="comment-form">
+  <%= simple_form_for([issue, comment], remote: true) do |f| %>
+    <%= f.input :content, label: false, placeholder: "add your comment" %>
+    <button type="submit" class="button button-icon"><i class="fas fa-comment"></i>Comment</button>
+  <% end %>
+</div>
+

@@ -1,0 +1,15 @@
+var voteCount = document.getElementById('vote-count');
+voteCount.innerHTML = "<%= @issue.vote_count %>";
+
+const upvote = document.getElementById('upvote');
+const downvote = document.getElementById('downvote');
+upvote.addEventListener('click', (e) => {
+  upvote.disabled = true;
+  downvote.disabled = true;
+})
+
+const downvote = document.getElementById('downvote');
+downvote.addEventListener('click', (e) => {
+  downvote.disabled = true;
+  upvote.disabled = true;
+})

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   root to: "issues#index"
   resources :issues, shallow: true do
-    resources :comments, only: [:new, :create, :edit, :update, :destroy]
+    resources :comments, only: [:create, :destroy]
     resources :votes, only: [:new, :create, :edit, :update, :destroy]
     resources :fix_reports, only: [:new, :create, :edit, :update]
   end

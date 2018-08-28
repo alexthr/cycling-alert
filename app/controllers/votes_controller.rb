@@ -4,9 +4,15 @@ class VotesController < ApplicationController
     @vote = @issue.votes.new(direction: params[:direction])
     @vote.user = current_user
     if @vote.save
-      redirect_to issue_path(@issue)
+      respond_to do |format|
+        format.html { redirect_to issue_path(@issue) }
+        format.js
+      end
     else
-      redirect_to issues_path
+      respond_to do |format|
+        format.html { render "issues/show" }
+        format.js
+      end
     end
   end
 end

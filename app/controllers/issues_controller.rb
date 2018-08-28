@@ -19,7 +19,7 @@ class IssuesController < ApplicationController
   end
 
   def show
-    @comments = @issue.comments
+    @comments = @issue.comments.order(created_at: :desc)
     @comment = Comment.new
   end
 
