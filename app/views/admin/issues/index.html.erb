@@ -2,8 +2,11 @@
 <div class="wrapper">
     <div class="container">
       <div class="select"><h6>Trier :</h6>
-          <%= simple_form_for :query, url: issues_path, method: :get do |f| %>
+          <%= simple_form_for :query, url: admin_issues_path, method: :get do |f| %>
+          <%= f.input :city, collection: @cities %>
           <%= f.input :element, as: :radio_buttons, collection: {'Par statut' => :fix_status, 'Par vote' => :vote_count, 'Par date' => :created_at}, placeholder: 'résolu', label: '' %>
+          <%= f.hidden_field :latitude %>
+          <%= f.hidden_field :longitude %>
           <%= f.button :submit %>
       <% end %>
     </div>

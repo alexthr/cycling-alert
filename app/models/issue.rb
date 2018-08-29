@@ -2,6 +2,7 @@ class Issue < ApplicationRecord
   has_attachments :photos, maximum: 6
   scope :filter_by_city, -> (city) { self.where(city: city) }
   scope :order_by_date_or_status, -> (element) { self.order(element.to_sym => :desc) }
+  scope :cities, -> { self.select('city').distinct.order(city: :asc).map(&:city) }
   # scope :vote_count -> (vote_count) { where vote_count: vote_count }
 
 

@@ -26,6 +26,16 @@ if(issueLat && issueLong) {
   })
 }
 
+const userLat = document.getElementById("query_latitude");
+const userLong = document.getElementById("query_longitude");
+
+if(userLat && userLong) {
+  navigator.geolocation.getCurrentPosition(function(location) {
+    userLat.value = location.coords.latitude;
+    userLong.value = location.coords.longitude;
+  })
+}
+
 const nextBtn = document.getElementById("next-form-btn");
 if(nextBtn) {
   nextBtn.addEventListener("click", function() {
