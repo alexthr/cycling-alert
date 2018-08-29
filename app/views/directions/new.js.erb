@@ -1,15 +1,14 @@
-console.log("im in new.js");
 var directions = L.mapquest.directions();
-
+const form = document.getElementById('itinerary-form');
 
 function directionsCallback(error, response) {
+  console.log(response);
+  form.insertAdjacentHTML('beforeend',`<p>Time: ${Math.round(response['route']['time']/60)} min Distance: ${Math.round(response['route']['distance']*10)/10} km</p>`);
   var directionsLayer = L.mapquest.directionsLayer({
     directionsResponse: response
   }).addTo(map);
   return map;
 }
-
-
 
 
 <% @issues.each do |issue| %>
@@ -45,8 +44,10 @@ setTimeout(function() {
       routeType: "bicycle",
       doReverseGeocode: false,
       enhancedNarrative: false,
-      mustAvoidLinkIds: [51482101]
+      unit: "k",
+      mustAvoidLinkIds: linkIds
     }
 
   }, directionsCallback);
 }, 2500);
+

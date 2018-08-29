@@ -1,11 +1,12 @@
-<div class="itinerary-form">
-  <%= simple_form_for :route, remote: true do |f| %>
-  <%= f.input :start, input_html: { id: "itinerary-start" } %>
-  <%= f.input :end, input_html: { id: "itinerary-end" } %>
-  <%= f.submit %>
-  <% end %>
+<div class="itinerary-wrapper">
+  <div id="itinerary-form">
+    <%= simple_form_for :route, remote: true do |f| %>
+    <%= f.input :start, input_html: { id: "itinerary-start" } %>
+    <%= f.input :end, input_html: { id: "itinerary-end" } %>
+    <%= f.submit %>
+    <% end %>
+  </div>
 </div>
-
 
 <div id="map" style="width: 100%; height: calc(100vh - 70px);"></div>
 
