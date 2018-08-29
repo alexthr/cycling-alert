@@ -1,7 +1,6 @@
 class DirectionsController < ApplicationController
   def show
     @issues = Issue.all
-    route = {start: "", end: ""}
   end
 
   def new

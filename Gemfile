@@ -27,6 +27,7 @@ gem "attachinary"
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
 
+gem 'rest-client'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

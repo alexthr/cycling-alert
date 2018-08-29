@@ -6,6 +6,7 @@
     <%= f.submit %>
     <% end %>
   </div>
+  <p id='itinerary-info'></p>
 </div>
 
 <div id="map" style="width: 100%; height: calc(100vh - 70px);"></div>
@@ -22,5 +23,11 @@
     layers: L.mapquest.tileLayer('map'),
     zoom: 3
   });
+
+  var directions = L.mapquest.directions();
+  let linkIds = [];
+  <% @issues.each do |issue| %>
+    linkIds.push(<%= issue.link_id %>)
+  <% end %>
 
 </script>

@@ -29,8 +29,11 @@ class IssuesController < ApplicationController
   def create
     @issue = Issue.new(issue_params)
     @issue.user = current_user
-    @issue.city = Geocoder.search([@issue.latitude, @issue.longitude]).first.city
     if @issue.save
+      @issue.city = Geocoder.search([@issue.latitude, @issue.longitude]).first.city
+      response = JSON.parse(RestClient.get "http://www.mapquestapi.com/directions/v2/findlinkid?key=SUwY49iDvVUIUtWdWXnHLhP1v9etD2d3&lat=#{@issue.latitude}&lng=#{@issue.longitude}")
+      @issue.link_id = response["link_id"]
+      @issue.save
       redirect_to issue_path(@issue)
     else
       render :new
