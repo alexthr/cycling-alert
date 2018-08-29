@@ -1,57 +1,25 @@
-<div id="map" style="width: 100%; height: calc(100vh - 70px);"></div>
+<div class="itinerary-form">
+  <%= simple_form_for :route, remote: true do |f| %>
+  <%= f.input :start, input_html: { id: "itinerary-start" } %>
+  <%= f.input :end, input_html: { id: "itinerary-end" } %>
+  <%= f.submit %>
+  <% end %>
+</div>
 
+
+<div id="map" style="width: 100%; height: calc(100vh - 70px);"></div>
 
 <h1>MAP</h1>
 
 
 <script>
-  window.onload = function() {
-    L.mapquest.key = 'SUwY49iDvVUIUtWdWXnHLhP1v9etD2d3';
 
-    var directions = L.mapquest.directions();
+  L.mapquest.key = 'SUwY49iDvVUIUtWdWXnHLhP1v9etD2d3';
 
+  var map = L.mapquest.map('map', {
+    center: [0,0],
+    layers: L.mapquest.tileLayer('map'),
+    zoom: 3
+  });
 
-    function directionsCallback(error, response) {
-      var map = L.mapquest.map('map', {
-        center: [0,0],
-        layers: L.mapquest.tileLayer('map'),
-        zoom: 7
-      });
-
-      var directionsLayer = L.mapquest.directionsLayer({
-        directionsResponse: response
-      }).addTo(map);
-      return map;
-    }
-
-    <% @issues.each do |issue| %>
-    directions.findLinkId({
-      "lng": <%= issue.longitude %>,
-      "lat": <%= issue.latitude %>
-
-    }, findLinkIdCallback);
-    <% end %>
-    let linkIds = [];
-    function findLinkIdCallback(error, response) {
-      linkIds.push(response.linkId);
-    }
-
-    console.log(linkIds);
-
-
-    directions.route({
-      start: 'Place Gambetta, Bordeaux, France',
-      end: 'Rue Lucien Faure, Bordeaux, France',
-      options: {
-        avoidTimedConditions: false,
-        ambiguities: "ignore",
-        routeType: "bicycle",
-        doReverseGeocode: false,
-        enhancedNarrative: false,
-        mustAvoidLinkIds: [14316069, 56912392, 58078861]
-      }
-
-    }, directionsCallback);
-
-  };
 </script>

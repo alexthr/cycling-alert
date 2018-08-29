@@ -7,6 +7,7 @@
   end
   root to: "issues#index"
   get "/directions" => "directions#show"
+  post "/directions" => "directions#new"
   resources :issues, shallow: true do
     resources :comments, only: [:create, :destroy]
     resources :votes, only: [:new, :create, :edit, :update, :destroy]

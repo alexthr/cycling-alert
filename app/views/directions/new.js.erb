@@ -1,0 +1,52 @@
+console.log("im in new.js");
+var directions = L.mapquest.directions();
+
+
+function directionsCallback(error, response) {
+  var directionsLayer = L.mapquest.directionsLayer({
+    directionsResponse: response
+  }).addTo(map);
+  return map;
+}
+
+
+
+
+<% @issues.each do |issue| %>
+L.marker([<%= issue.latitude %>, <%= issue.longitude %>], {
+  icon: L.mapquest.icons.incident({
+    shadow: true,
+    size: 'md'
+  })
+}).addTo(map);
+directions.findLinkId({
+  "lng": <%= issue.longitude %>,
+  "lat": <%= issue.latitude %>
+
+}, findLinkIdCallback);
+<% end %>
+let linkIds = [];
+function findLinkIdCallback(error, response) {
+  linkIds.push(response.linkId);
+  console.log(response.linkId);
+}
+
+console.log(linkIds);
+console.log('<%= @route[:start] %>');
+
+
+setTimeout(function() {
+  directions.route({
+    start: '<%= @route[:start] %>',
+    end: '<%= @route[:end] %>',
+    options: {
+      avoidTimedConditions: false,
+      ambiguities: "ignore",
+      routeType: "bicycle",
+      doReverseGeocode: false,
+      enhancedNarrative: false,
+      mustAvoidLinkIds: [51482101]
+    }
+
+  }, directionsCallback);
+}, 2500);
