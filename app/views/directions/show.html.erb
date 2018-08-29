@@ -1,0 +1,33 @@
+<div class="itinerary-wrapper">
+  <div id="itinerary-form">
+    <%= simple_form_for :route, remote: true do |f| %>
+    <%= f.input :start, input_html: { id: "itinerary-start" } %>
+    <%= f.input :end, input_html: { id: "itinerary-end" } %>
+    <%= f.submit %>
+    <% end %>
+  </div>
+  <p id='itinerary-info'></p>
+</div>
+
+<div id="map" style="width: 100%; height: calc(100vh - 70px);"></div>
+
+<h1>MAP</h1>
+
+
+<script>
+
+  L.mapquest.key = 'SUwY49iDvVUIUtWdWXnHLhP1v9etD2d3';
+
+  var map = L.mapquest.map('map', {
+    center: [0,0],
+    layers: L.mapquest.tileLayer('map'),
+    zoom: 3
+  });
+
+  var directions = L.mapquest.directions();
+  let linkIds = [];
+  <% @issues.each do |issue| %>
+    linkIds.push(<%= issue.link_id %>)
+  <% end %>
+
+</script>

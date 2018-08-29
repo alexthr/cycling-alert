@@ -1,0 +1,42 @@
+map.remove();
+map = L.mapquest.map('map', {
+    center: [0,0],
+    layers: L.mapquest.tileLayer('map'),
+    zoom: 3
+  });
+
+
+function directionsCallback(error, response) {
+  let form = document.getElementById('itinerary-form');
+  document.getElementById('itinerary-info').innerHTML = `Time: ${Math.round(response['route']['time']/60)} min Distance: ${Math.round(response['route']['distance']*10)/10} km`;
+  var directionsLayer = L.mapquest.directionsLayer({
+    directionsResponse: response
+  }).addTo(map);
+  return map;
+}
+
+<% @issues.each do |issue| %>
+  L.marker([<%= issue.latitude %>, <%= issue.longitude %>], {
+    icon: L.mapquest.icons.incident({
+      shadow: true,
+      size: 'md'
+    })
+  }).addTo(map);
+<% end %>
+
+directions.route({
+  start: '<%= @route[:start] %>',
+  end: '<%= @route[:end] %>',
+  options: {
+    avoidTimedConditions: false,
+    ambiguities: "ignore",
+    routeType: "bicycle",
+    doReverseGeocode: false,
+    enhancedNarrative: false,
+    unit: "k",
+    mustAvoidLinkIds: linkIds
+  }
+
+}, directionsCallback);
+
+

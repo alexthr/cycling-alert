@@ -23,15 +23,15 @@ juppe.save
 
 puts 'Users created!'
 
-trou = Issue.new(title: "Bite gênante", description: 'Cette bite est en plein milieu de la piste cyclable.', solution: 'Couper la bite.', address: "50, cours Victor Hugo, Bordeaux", city: "Bordeaux")
-croisement = Issue.new(title: 'Végétation luxuriante', description: 'Un giga buisson bloque la circulation des cyclistes.', solution: 'Raser le buisson.', address: "148, cours Balguerie Stuttenberg, Bordeaux", city: "Bordeaux")
-piste = Issue.new(title: 'Patrick Buisson', description: 'Un giga buisson bloque la circulation des cyclistes.', solution: 'Raser le buisson.', address: "36, rue René Vaché, Talence", city: "Talence")
-eclairage = Issue.new(title: "Travaux sur la route", description: "On ne peut plus emprunter ce chemin à cause des travaux et il n y a pas de signalement.", solution: 'Remettre la lumière.', address: "50, rue Servandoni, Bordeaux", city: "Bordeaux")
-dangereux = Issue.new(title: 'Stationnement gênant', description: 'Cette piste est encombrée par les voitures qui sont mal garées et jamais verbalisées.', solution: 'Mettre des PV.', address: "6, rue de Condé, Bordeaux", city: "Bordeaux")
-sens_interdit = Issue.new(title: "Poteau gênant", description: "Un poteau a poussé au beau milieu de la piste, c'est embêtant", solution: 'Déplacer la piste ou le poteau.', address: "9, rue Rolland, Bordeaux", city: "Bordeaux")
-travaux = Issue.new(title: 'Grillage sur la piste', description: 'On ne peut plus emprunter ce chemin à cause du grillage et il n y a pas de signalement.', solution: 'Avertir les cyclistes avec un panneau.', address: "10, rue villa Gaudelet, Paris", city: "Paris")
-viaduc = Issue.new(title: 'Champ de bosses', description: 'Je ne peux plus circuler.', solution: 'Aplanir la route.', address: "10, rue du 14 juillet, le Pré-Saint-Gervais", city: "Le Pré-Saint-Gervais")
-acces = Issue.new(title: 'Bite gênante', description: 'Encore une bite à éviter !', solution: "Arrêter l'alcool.", address: "14, rue de l'Odéon, Paris", city: "Paris")
+trou = Issue.new(title: "Bite gênante", description: 'Cette bite est en plein milieu de la piste cyclable.', solution: 'Couper la bite.', address: "50, cours Victor Hugo, Bordeaux", city: "Bordeaux", link_id: 86694343)
+croisement = Issue.new(title: 'Végétation luxuriante', description: 'Un giga buisson bloque la circulation des cyclistes.', solution: 'Raser le buisson.', address: "148, cours Balguerie Stuttenberg, Bordeaux", city: "Bordeaux", link_id: 58078861)
+piste = Issue.new(title: 'Patrick Buisson', description: 'Un giga buisson bloque la circulation des cyclistes.', solution: 'Raser le buisson.', address: "36, rue René Vaché, Talence", city: "Talence", link_id: 46829827)
+eclairage = Issue.new(title: "Travaux sur la route", description: "On ne peut plus emprunter ce chemin à cause des travaux et il n y a pas de signalement.", solution: 'Remettre la lumière.', address: "50, rue Servandoni, Bordeaux", city: "Bordeaux", link_id: 2684558)
+dangereux = Issue.new(title: 'Stationnement gênant', description: 'Cette piste est encombrée par les voitures qui sont mal garées et jamais verbalisées.', solution: 'Mettre des PV.', address: "6, rue de Condé, Bordeaux", city: "Bordeaux", link_id: 15871798)
+sens_interdit = Issue.new(title: "Poteau gênant", description: "Un poteau a poussé au beau milieu de la piste, c'est embêtant", solution: 'Déplacer la piste ou le poteau.', address: "9, rue Rolland, Bordeaux", city: "Bordeaux", link_id: 5227202)
+travaux = Issue.new(title: 'Grillage sur la piste', description: 'On ne peut plus emprunter ce chemin à cause du grillage et il n y a pas de signalement.', solution: 'Avertir les cyclistes avec un panneau.', address: "10, rue villa Gaudelet, Paris", city: "Paris", link_id: 88351737)
+viaduc = Issue.new(title: 'Champ de bosses', description: 'Je ne peux plus circuler.', solution: 'Aplanir la route.', address: "10, rue du 14 juillet, le Pré-Saint-Gervais", city: "Le Pré-Saint-Gervais", link_id: 24135478)
+acces = Issue.new(title: 'Bite gênante', description: 'Encore une bite à éviter !', solution: "Arrêter l'alcool.", address: "14, rue de l'Odéon, Paris", city: "Paris", link_id: 105803567)
 
 trou.user = sanchinho
 croisement.user = carine
