@@ -1,0 +1,4 @@
+meta_product_name: "Cycling alert"
+meta_title: "Cycling alert - Make the city a better place for biking"
+meta_description: "A worldwide community of cyclists who report bike path issues to solve in your city."
+meta_image: "cycling.jpeg"                       # should exist in `app/assets/images/`
