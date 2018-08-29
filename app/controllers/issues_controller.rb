@@ -6,9 +6,19 @@ class IssuesController < ApplicationController
     # @issues = Issue.all.sort { |issue1, issue2| issue2.vote_count <=> issue1.vote_count }
     @issues = Issue.select('*, (select sum(direction) from votes where issue_id = issues.id) as total')
    .order('total, created_at desc NULLS LAST')
+    if params[:query].present?
+      @issues = Issue.order_by_date_or_status(query_params[:element])
+    end
 
-    # @issues = Issue.where(city: query_city) if query_city.present?
-    @issues = Issue.order(fix_status: :desc) if query_status.present?
+    # @issues = Issue.filter_by_city(params[:city]) if params[:city].present?
+    # @issues = Issue.fix_status(params[:fix_status]) if params[:fix_status].present?
+    # @issues = Issue.vote_count(params[:vote_count]) if params[:vote_count].present?
+    # @issues = Issue.date(params[:date]) if params[:date].present?
+
+
+    # @issues = Issue.order(date: :desc)
+    # @issues = Issue.order(vote_count: :desc)
+    # @issues = Issue.order(fix_status: :desc)
 
     @markers = @issues.map do |issue|
       {
@@ -57,7 +67,7 @@ class IssuesController < ApplicationController
   end
 
   def query_params
-    params.require(:query).permit(:fix_status)
+    params.require(:query).permit(:element, :city)
   end
 
 
