@@ -10,8 +10,7 @@ class IssuesController < ApplicationController
       {
         lat: issue.latitude,
         lng: issue.longitude,
-        infoWindow: { content: render_to_string(partial: "/issues/map_info_window", locals: { issue: issue }) },
-
+        infoWindow: { content: render_to_string(partial: "/issues/map_info_window", locals: { issue: issue }), class: "info-window" },
       }
     end
   end

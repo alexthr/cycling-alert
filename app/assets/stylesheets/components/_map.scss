@@ -18,13 +18,14 @@
 }
 
 .info-window {
-  width: auto;
-  height: auto;
+  width: 200px;
+  height: 300px;
 }
 
 .info-window-issue-image {
-  height: 150px;
+  height: 200px;
   background-size: cover;
+  padding: 5px;
 }
 
 .gm-style-iw a {

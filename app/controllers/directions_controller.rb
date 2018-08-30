@@ -4,7 +4,7 @@ class DirectionsController < ApplicationController
   end
 
   def new
-    @issues = Issue.all
+    @issues = Issue.where.not(fix_status: 2);
     @route = params[:route]
     if (@route[:start].nil? || @route[:end].nil?)
       respond_to do |format|
