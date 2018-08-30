@@ -1,5 +1,5 @@
 <%= render 'carousel' %>
-<div class="container">
+
   <div class="issue-card">
 
     <div class="issue-card-title">
@@ -38,21 +38,24 @@
         <p><%= link_to "Résolu ?", issue_fix_reports_path(@issue), method: :post, class: "change-status", id: "status-button" %></p>
       <% end %>
     </div>
-  </div>
 
-  <div class="issue-card issue-card-other">
+
+  <div class="issue-card-other">
     <h3>Description</h3>
     <p><%= @issue.description %></p>
   </div>
 
   <% if @issue.solution != "" %>
-  <div class="issue-card issue-card-other">
+  <div class="issue-card-other">
     <h3>Solution</h3>
     <p><%= @issue.solution %></p>
   </div>
   <% end %>
+  </div>
 
+<div class="container">
   <%= render "comments/comment-thread" %>
+</div>
 
   <% if @issue.user == current_user %>
     <%= link_to issue_path(@issue), method: "delete" do %>
@@ -60,6 +63,6 @@
     <% end %>
   <% end %>
 
-</div>
+
 
 

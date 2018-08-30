@@ -12,7 +12,9 @@
     <% end %>
   </div>
   <p><%= comment.content %></p>
-  <%= link_to comment, method: "delete", remote: true, class: "delete-comment" do %>
-    <i class="fas fa-trash-alt"></i>
+  <% if current_user == comment.user %>
+    <%= link_to comment, method: "delete", remote: true, class: "delete-comment" do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
   <% end %>
 </div>
