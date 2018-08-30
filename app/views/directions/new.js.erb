@@ -8,7 +8,6 @@ map = L.mapquest.map('map', {
 
 
 function generateRouteInfo(response) {
-  console.log('ive been called');
   routeInfoHtml = `<span id='info-time'>${Math.round(response['route']['time']/60)} min </span><span id='info-distance'>(${Math.round(response['route']['distance']*10)/10} km)</span><p id='info-first-step'>${response['route']['legs'][0]['origNarrative']}</p>`
   routeInfo = document.getElementById('itinerary-info');
   if(routeInfo.style.display === "block") { $('itinerary-info').slideUp() };
