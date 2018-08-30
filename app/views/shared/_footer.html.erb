@@ -1,10 +1,14 @@
-<div class="footer footer-image" style="background-image: url('<%= cl_image_path "footer_background" %>');">
+<div class="footer">
+  <div class="footer-new-issue">
+  <%= link_to directions_path, class: "btn-new" do %>
+    <i class="fas fa-map-signs"></i>
+    <p>Create an itinerary</p>
   <% end %>
-
-  <div class="footer-links" align="center">
-    <a href="#"><i class="fab fa-github-alt"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
+  </div>
+    <div class="footer-new-itinerary">
+  <%= link_to new_issue_path, class: "btn-new" do %>
+    <i class="fas fa-plus-square"></i>
+    <p>Report an issue</p>
+  <% end %>
   </div>
 </div>

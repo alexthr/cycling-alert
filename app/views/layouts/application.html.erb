@@ -27,6 +27,10 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
+    <%# unless current_page?(directions_path) || current_page?(new_issue_path) || current_page?(issue_path(@issue)) %>
+    <% unless content_for(:hide_footer) %>
+      <%= render 'shared/footer' %>
+    <% end %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_SERVER_KEY']}" %>
     <%= cloudinary_js_config %>

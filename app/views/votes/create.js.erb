@@ -3,12 +3,18 @@ voteCount.innerHTML = "<%= @issue.vote_count %>";
 
 const upvote = document.getElementById('upvote');
 const downvote = document.getElementById('downvote');
+const btnUpvote = document.querySelector(".issue-votes-action-angry");
+const btnDownvote = document.querySelector(".issue-votes-action-care");
 upvote.addEventListener('click', (e) => {
   upvote.disabled = true;
   downvote.disabled = true;
+  btnUpvote.classList.add("issue-votes-disable");
+  btnDownvote.classList.add("issue-votes-disable");
 })
 
 downvote.addEventListener('click', (e) => {
   downvote.disabled = true;
   upvote.disabled = true;
+  btnUpvote.classList.add("issue-votes-disable");
+  btnDownvote.classList.add("issue-votes-disable");
 })
