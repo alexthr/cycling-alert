@@ -27,7 +27,8 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <% unless current_page?(directions_path) || current_page?(new_issue_path) || current_page?(issue_path(@issue)) %>
+    <%# unless current_page?(directions_path) || current_page?(new_issue_path) || current_page?(issue_path(@issue)) %>
+    <% unless content_for(:hide_footer) %>
       <%= render 'shared/footer' %>
     <% end %>
     <%= javascript_include_tag 'application' %>

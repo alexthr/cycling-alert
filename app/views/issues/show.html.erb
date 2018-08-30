@@ -1,44 +1,63 @@
+<% content_for :hide_footer, true %>
+
 <%= render 'carousel' %>
 
   <div class="issue-card">
 
-    <div class="issue-card-title">
-      <div class="issue-title">
-        <h2><%= @issue.title %></h2>
+  <div class="issue-card-username">
+    <%= cl_image_tag cl_image_tag_or_not(@issue.user.avatar), class: "profile-avatar" %>
+    <p>Posted by <%= @issue.user.username %></p>
+  </div>
+
+  <div class="issue-card-title">
+    <h2><%= @issue.title %></h2>
+  </div>
+
+  <div class="issue-votes-count">
+    <h6 data-issue-id="<%= @issue.id %>" id="vote-count"><%= @issue.vote_count %></h6>
+    <p>Importance</p>
+    <p>rate</p>
+  </div>
+
+  <div class="issue-votes-action">
+    <% if @issue.votes.any? { |vote| vote.user == current_user } %>
+
+      <div class="issue-votes-action-angry issue-votes-disable">
+        <div class="issue-votes-action-angry-text ">
+          <i class="far fa-angry""></i>
+          <p>Priority</p>
+        </div>
       </div>
-      <div class="issue-votes">
-        <% if @issue.votes.any? { |vote| vote.user == current_user } %>
-          <i class="fas fa-caret-up issue-votes-arrow", style="color: #32B796"></i>
-          <p data-issue-id="<%= @issue.id %>" id="vote-count"><%= @issue.vote_count %></p>
-          <i class="fas fa-caret-down issue-votes-arrow", style="color: #E23F36"></i>
-        <% else %>
-          <%= link_to issue_votes_path(@issue, direction: 1), method: "post", id: "upvote", remote: true do %>
-            <i id="upvote" class="fas fa-caret-up issue-votes-arrow", style="color: #32B796"></i>
-          <% end %>
-          <p data-issue-id="<%= @issue.id %>" id="vote-count"><%= @issue.vote_count %></p>
-          <%= link_to issue_votes_path(@issue, direction: -1), method: "post", id: "downvote", remote: true do %>
-            <i class="fas fa-caret-down issue-votes-arrow", style="color: #E23F36"></i>
-          <% end %>
+
+      <div class="issue-votes-action-care issue-votes-disable">
+        <div class="issue-votes-action-care-text">
+          <i class="fas fa-caret-down"></i>
+          <p>Not a priority</p>
+        </div>
+      </div>
+
+    <% else %>
+
+      <div class="issue-votes-action-angry">
+        <%= link_to issue_votes_path(@issue, direction: 1), method: "post", id: "upvote", remote: true do %>
+        <div class="issue-votes-action-angry-text">
+          <i class="far fa-angry"></i>
+          <p>Priority</p>
+        </div>
         <% end %>
       </div>
-    </div>
 
-    <div class="issue-card-username">
-      <p>Posted by <%= @issue.user.username %></p>
-      <%= cl_image_tag cl_image_tag_or_not(@issue.user.avatar), class: "profile-avatar" %>
-    </div>
+      <div class="issue-votes-action-care">
+        <%= link_to issue_votes_path(@issue, direction: -1), method: "post", id: "downvote", remote: true do %>
+        <div class="issue-votes-action-care-text">
+          <i class="far fa-grin-tongue"></i>
+          <p>Not a priority</p>
+        </div>
+        <% end %>
+      </div>
 
-    <div class="issue-card-status">
-      <% if @issue.fix_reports.any?{ |fix_report| fix_report.user == current_user } %>
-         <p class="issue-card-status-solved">Problème résolu</p>
-      <% else %>
-        <p class="issue-status <%= @issue.fix_status.delete(" ") %>"><%= @issue.fix_status.capitalize.gsub("_", " ") %> </p>
-      <% end %>
-      <% unless @issue.fix_reports.count >= 3 || @issue.fix_reports.any?{ |fix_report| fix_report.user == current_user } %>
-        <p><%= link_to "Résolu ?", issue_fix_reports_path(@issue), method: :post, class: "change-status", id: "status-button" %></p>
-      <% end %>
-    </div>
-
+    <% end %>
+   </div>
 
   <div class="issue-card-other">
     <h3>Description</h3>
