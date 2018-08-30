@@ -12,10 +12,16 @@
   #upload-btn {
     position: absolute;
     top: 0px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
   }
 
   .attachinary_container {
-    margin-top: 5px;
+    margin-top: 15px;
+    padding: 20px 0;
   }
 
   .attachinary_container ul {
@@ -42,9 +48,10 @@
     color: grey;
   }
 
-  .issue-form {
-    margin-top: 20px;
+  #issue-form {
+    margin-top: 50px;
   }
+
   .hidden {
     display: none;
   }
@@ -62,4 +69,26 @@
 
   #issue-form, #solution-form, #next-form-btn, #submit-btn {
     display: none;
+  }
+
+  #issue-form-wrapper {
+    height: calc(100vh - 50px);
+    position: relative;
+  }
+
+  #submit-btn {
+    position: absolute;
+    bottom: 20px;
+    width: 80%;
+    margin: 0 10%;
+    height: 75px;
+    font-size: 25px;
+    background-color: white;
+    border: 3px solid #32B786;
+    color: #32B786;
+  }
+
+  #submit-btn:focus {
+    background-color: #32B786;
+    color: white;
   }

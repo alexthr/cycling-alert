@@ -1,9 +1,10 @@
 $("#upload-btn").click(function(e) {
-  $("#next-form-btn").fadeToggle();
+  $("#next-form-btn").fadeIn();
 });
 
 $("#next-form-btn").click(function(e) {
   e.preventDefault();
+  $('#new-issue-form-header').hide();
   $("#next-form-btn").fadeToggle();
   $("#photo-form").slideUp();
   $("#issue-form").slideDown();
