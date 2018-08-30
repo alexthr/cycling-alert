@@ -4,8 +4,8 @@ class IssuesController < ApplicationController
 
   def index
     @issues = Issue.select('*, (select sum(direction) from votes where issue_id = issues.id) as total')
-   .order('total, created_at desc NULLS LAST')
-    @issues_marker = Issue.where.not(latitude: nil, longitude: nil)
+   .order('total desc NULLS LAST, created_at desc')
+    @issues_marker = Issue.where(city: current_user.city).where.not(latitude: nil, longitude: nil)
     @markers = @issues_marker.map do |issue|
       {
         lat: issue.latitude,

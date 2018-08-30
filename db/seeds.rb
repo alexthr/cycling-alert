@@ -5,16 +5,16 @@ Comment.destroy_all
 
 puts 'Creating issues and users...'
 
-sanchinho = User.new(username: 'sanchinho', password: '123456', email: 'yannick.sanchez.guasch@gmail.com')
+sanchinho = User.new(username: 'sanchinho', password: '123456', email: 'yannick.sanchez.guasch@gmail.com', city: "Bordeaux")
 sanchinho.avatar_url = "https://avatars1.githubusercontent.com/u/7702269?v=4"
 sanchinho.save
-carine = User.new(username: "carineLC", email: "carine.le.charles@gmail.com", password: "123456")
+carine = User.new(username: "carineLC", email: "carine.le.charles@gmail.com", password: "123456", city: "Bordeaux")
 carine.avatar_url = "https://avatars0.githubusercontent.com/u/39913570?v=4"
 carine.save
-alexthr = User.new(username: "alexthr", email: "alex.thoreux@gmail.com", password: "123456")
+alexthr = User.new(username: "alexthr", email: "alex.thoreux@gmail.com", password: "123456", city: "Bordeaux")
 alexthr.avatar_url = "https://avatars0.githubusercontent.com/u/40071634?v=4"
 alexthr.save
-visant = User.new(username: "visant", email: "visant@gmail.com", password: "123456")
+visant = User.new(username: "visant", email: "visant@gmail.com", password: "123456", city: "Bordeaux")
 visant.avatar_url = "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/nw5ey8f0ze2hxaecqvt1.jpg"
 visant.save
 juppe = User.new(username: "Mairie de Bordeaux", email: "juppe@gmail.com", password: "123456", city: "Bordeaux", admin: true)
