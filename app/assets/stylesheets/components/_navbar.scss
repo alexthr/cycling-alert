@@ -1,10 +1,11 @@
 .navbar {
   z-index: 1000;
   height: 60px;
-  padding: 5px 5px;
+  padding: 3px 5px;
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
   margin-bottom: 0;
   position: relative;
+  background: white;
 }
 
 .navbar-display{
@@ -17,7 +18,7 @@
   margin: 0 15px;
   text-align: center;
   cursor: pointer;
-  width: 30px,
+  width: 40px,
 }
 
 .navbar-menu {
@@ -45,10 +46,9 @@
   margin: 0px 15px;
   text-align: center;
   color: #6C91C2;
-  width: 30px;
+  width: 40px;
   cursor: pointer;
   font-size: 25px;
-  padding-bottom: 5px;
 }
 
 .navbar-right {
