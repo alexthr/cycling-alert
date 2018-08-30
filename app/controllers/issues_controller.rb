@@ -3,16 +3,14 @@ class IssuesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    @issues = Issue.all.sort { |issue1, issue2| issue2.vote_count <=> issue1.vote_count }
+    @issues = Issue.select('*, (select sum(direction) from votes where issue_id = issues.id) as total')
+   .order('total, created_at desc NULLS LAST')
+
     @markers = @issues.map do |issue|
       {
         lat: issue.latitude,
         lng: issue.longitude,
         infoWindow: { content: render_to_string(partial: "/issues/map_info_window", locals: { issue: issue }) },
-        # picture: {
-        # "url": view_context.image_path("logo.png"),
-        # "width":  50,
-        # "height": 45 }
       }
     end
   end
@@ -49,7 +47,6 @@ class IssuesController < ApplicationController
     @issue.destroy
     redirect_to issues_path
   end
-
 
 
   private
