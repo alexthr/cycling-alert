@@ -5,12 +5,13 @@ class IssuesController < ApplicationController
   def index
     @issues = Issue.select('*, (select sum(direction) from votes where issue_id = issues.id) as total')
    .order('total, created_at desc NULLS LAST')
-
-    @markers = @issues.map do |issue|
+    @issues_marker = Issue.where.not(latitude: nil, longitude: nil)
+    @markers = @issues_marker.map do |issue|
       {
         lat: issue.latitude,
         lng: issue.longitude,
         infoWindow: { content: render_to_string(partial: "/issues/map_info_window", locals: { issue: issue }) },
+
       }
     end
   end
