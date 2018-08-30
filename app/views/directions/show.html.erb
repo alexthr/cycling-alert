@@ -1,17 +1,58 @@
-<div class="itinerary-wrapper">
+<div id="itinerary-wrapper">
   <div id="itinerary-form">
     <%= simple_form_for :route, remote: true do |f| %>
-    <%= f.input :start, input_html: { id: "itinerary-start" } %>
-    <%= f.input :end, input_html: { id: "itinerary-end" } %>
+    <%= f.input :start, label: false, input_html: { placeholder: "Start", id: "itinerary-start" } %>
+    <%= f.input :end, label: false, input_html: { placeholder: "End", id: "itinerary-end" } %>
+    <%= f.collection_radio_buttons :route_option, [['Safest'], ['Fastest']], :first, :last %>
     <%= f.submit %>
     <% end %>
   </div>
   <p id='itinerary-info'></p>
 </div>
 
-<div id="map" style="width: 100%; height: calc(100vh - 70px);"></div>
+<div id="map"></div>
 
-<h1>MAP</h1>
+<style>
+  #map {
+    z-index: 1;
+    width: 100%;
+    height: calc(100vh - 50px);
+  }
+
+  #itinerary-wrapper {
+    background-color: rgba(0, 0, 0, 0);
+    padding-top: 15px;
+    z-index: 5;
+    top: 50px;
+    left: 50px;
+    height: 200px;
+    position: fixed;
+    width: 250px;
+  }
+
+  #itinerary-start {
+    border-radius: 5px;
+  }
+
+  #itinerary-end {
+    border-radius: 5px;
+  }
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <script>
