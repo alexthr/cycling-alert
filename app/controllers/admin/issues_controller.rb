@@ -12,7 +12,7 @@ class Admin::IssuesController < ApplicationController
     elsif query_params[:city].present?
       @issues = Issue.where(city: query_params[:city])
     else
-      @issues = Issue.all
+      @issues = Issue.where(city: current_user.city)
     end
 
     @issues = @issues.order_by_date_or_status(query_params[:element]) if params[:query].present? && query_params[:element].present? && query_params[:element] != 'vote_count'
