@@ -1,9 +1,9 @@
 map.remove();
 map = L.mapquest.map('map', {
-    center: [0,0],
-    layers: L.mapquest.tileLayer('map'),
-    zoom: 3
-  });
+  center: [0,0],
+  layers: L.mapquest.tileLayer('map'),
+  zoom: 3
+});
 
 
 function directionsCallback(error, response) {
@@ -16,28 +16,47 @@ function directionsCallback(error, response) {
 }
 
 <% @issues.each do |issue| %>
-  L.marker([<%= issue.latitude %>, <%= issue.longitude %>], {
-    icon: L.mapquest.icons.incident({
-      shadow: true,
-      size: 'md'
-    })
-  }).addTo(map);
+L.marker([<%= issue.latitude %>, <%= issue.longitude %>], {
+  icon: L.mapquest.icons.incident({
+    shadow: true,
+    size: 'md'
+  })
+}).addTo(map);
 <% end %>
 
-directions.route({
-  start: '<%= @route[:start] %>',
-  end: '<%= @route[:end] %>',
-  options: {
-    avoidTimedConditions: false,
-    ambiguities: "ignore",
-    routeType: "bicycle",
-    doReverseGeocode: false,
-    enhancedNarrative: false,
-    unit: "k",
-    mustAvoidLinkIds: linkIds
+<% if @route[:route_option] == 'Safest' %>
+  directions.route({
+    start: '<%= @route[:start] %>',
+    end: '<%= @route[:end] %>',
+    options: {
+      avoidTimedConditions: false,
+      ambiguities: "ignore",
+      routeType: "bicycle",
+      doReverseGeocode: false,
+      enhancedNarrative: false,
+      unit: "k",
+      mustAvoidLinkIds: linkIds
 
-  }
+    }
 
-}, directionsCallback);
+  }, directionsCallback);
+
+<% elsif @route[:route_option] == 'Fastest' %>
+  directions.route({
+    start: '<%= @route[:start] %>',
+    end: '<%= @route[:end] %>',
+    options: {
+      avoidTimedConditions: false,
+      ambiguities: "ignore",
+      routeType: "bicycle",
+      doReverseGeocode: false,
+      enhancedNarrative: false,
+      unit: "k",
+      mustAvoidLinkIds: []
+
+    }
+
+  }, directionsCallback);
+<% end %>
 
 

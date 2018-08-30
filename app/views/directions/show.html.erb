@@ -1,10 +1,17 @@
 <div id="itinerary-wrapper">
   <div id="itinerary-form">
-    <%= simple_form_for :route, remote: true do |f| %>
-    <%= f.input :start, label: false, input_html: { placeholder: "Start", id: "itinerary-start" } %>
-    <%= f.input :end, label: false, input_html: { placeholder: "End", id: "itinerary-end" } %>
-    <%= f.collection_radio_buttons :route_option, [['Safest'], ['Fastest']], :first, :last %>
-    <%= f.submit %>
+    <div id="itinerary-inputs">
+      <%= simple_form_for :route, remote: true do |f| %>
+      <%= f.input :start, label: false, input_html: { placeholder: "Start", id: "itinerary-start" } %>
+      <%= f.input :end, label: false, input_html: { placeholder: "End", id: "itinerary-end" } %>
+    </div>
+    <div id="itinerary-form-options">
+      <%= f.collection_radio_buttons :route_option, [['Safest'], ['Fastest']], :first, :last %>
+    </div>
+    <%= f.button :button, class: "itinerary-submit" do %>
+      <i class="fas fa-bicycle"></i>
+      <p>GO</p>
+    <% end %>
     <% end %>
   </div>
   <p id='itinerary-info'></p>
@@ -13,30 +20,72 @@
 <div id="map"></div>
 
 <style>
-  #map {
-    z-index: 1;
-    width: 100%;
-    height: calc(100vh - 50px);
-  }
+#map {
+  z-index: 1;
+  width: 100%;
+  height: calc(100vh - 50px);
+}
 
-  #itinerary-wrapper {
-    background-color: rgba(0, 0, 0, 0);
-    padding-top: 15px;
-    z-index: 5;
-    top: 50px;
-    left: 50px;
-    height: 200px;
-    position: fixed;
-    width: 250px;
-  }
+#itinerary-wrapper {
+  background-color: rgba(255,255,255,0.75);
+  padding: 15px 0;
+  z-index: 5;
+  top: 50px;
+  left: 45px;
+  height: 120px;
+  position: fixed;
+  width: 369px;
+  border-radius: 0 0 0 5px;
+}
 
-  #itinerary-start {
-    border-radius: 5px;
-  }
+.itinerary-submit {
+  padding: 0;
+  width: 44px;
+  border-radius: 5px;
+  background-color: #32B796;
+}
 
-  #itinerary-end {
-    border-radius: 5px;
-  }
+#itinerary-form {
+  display: flex;
+}
+
+#itinerary-inputs {
+  height: 90px;
+  flex: 0 0 230px;
+  padding-left: 10px;
+}
+
+.collection_radio_buttons {
+  color: #767676;
+}
+
+#itinerary-inputs form {
+  height: 90px;
+}
+
+#itinerary-inputs form .form-group.route_start {
+  margin-bottom: 12px;
+}
+
+#itinerary-form-options {
+  display: flex;
+  flex-direction: column;
+  width: 90px;
+  justify-content: space-between;
+  height: 90px;
+}
+
+#itinerary-form-options span {
+  margin: 10px 0 10px 5px;
+}
+
+#itinerary-start {
+  border-radius: 5px;
+}
+
+#itinerary-end {
+  border-radius: 5px;
+}
 
 </style>
 
@@ -68,7 +117,7 @@
   var directions = L.mapquest.directions();
   let linkIds = [];
   <% @issues.each do |issue| %>
-    linkIds.push(<%= issue.link_id %>)
+  linkIds.push(<%= issue.link_id %>)
   <% end %>
 
 </script>
