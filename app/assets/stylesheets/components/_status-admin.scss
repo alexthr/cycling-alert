@@ -1,0 +1,51 @@
+.admin-dashboard {
+  display: flex;
+  justify-content: space-around;
+}
+
+.parent-statistic {
+  background-color: #F4F4F4;
+  margin-bottom: 0px;
+  margin-bottom: 0px;
+  height: auto;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+
+.statistic {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  color: white;
+  margin-right: 10px;
+}
+
+.bg-green {
+  background-color: $green;
+}
+
+.bg-orange {
+  background-color: $orange;
+}
+
+.bg-red {
+  background-color: $red;
+}
+
+.width-50 {
+  width: 50px;
+}
+
+.margin-left-10px {
+  margin-left: 10px;
+}
+
+.query {
+  margin-bottom: 20px;
+}

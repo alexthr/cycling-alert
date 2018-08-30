@@ -1,23 +1,54 @@
 
 <div class="wrapper">
-    <div class="container">
-      <h5>Bonjour, <%= current_user.username %>, il vous reste <%= @issues.where(fix_status: 0).count %> problèmes à traiter </h5>
-      <div class="select"><h6>Trier :</h6>
-          <%= simple_form_for :query, url: admin_issues_path, method: :get do |f| %>
-          <%= f.input :city, collection: @cities %>
-          <%= f.input :element, label: false, as: :radio_buttons, collection: {'Par statut' => :fix_status, 'Par vote' => :vote_count, 'Par date' => :created_at}, placeholder: 'résolu' %>
+  <div class="container">
+    <div class="row">
+      <h2>Bonjour, <%= current_user.username %><%= cl_image_tag cl_image_tag_or_not(current_user.avatar), class: "profile-avatar" %></h2>
+
+      <div class="admin-dashboard">
+
+
+        <div class="parent-statistic">
+          <p class="statistic bg-red"><%= @issues.where(fix_status: 0).count %></p>
+          <h5>problèmes à traiter</h5>
+        </div>
+        <div class="parent-statistic">
+          <p class="statistic bg-orange"><%= @issues.where(fix_status: 1).count %></p>
+          <h5>problèmes en cours</h5>
+        </div>
+        <div class="parent-statistic">
+          <p class="statistic bg-green"><%= @issues.where(fix_status: 2).count %></p>
+          <h5>problèmes résolus</h5>
+        </div>
+
+      </div>
+
+
+
+
+        <%= simple_form_for :query, url: admin_issues_path, method: :get do |f| %>
+          <%= f.input :city, label: 'Filtrer par ville', collection: @cities %>
+          <div>
+            <label class="form-control-label">Trier</label>
+            <div>
+              <input type="hidden" name="query[element]" value=""><div class="form-check"><input class="radio_buttons required" type="radio" value="fix_status" name="query[element]" id="query_element_fix_status"><label class="collection_radio_buttons margin-left-10px text-gray-color" for="query_element_fix_status">Par problème résolu</label></div><div class="form-check"><input class="radio_buttons required" type="radio" value="vote_count" name="query[element]" id="query_element_vote_count"><label class="collection_radio_buttons margin-left-10px text-gray-color" for="query_element_vote_count">Par nombre de votes</label></div><div class="form-check"><input class="radio_buttons required" type="radio" value="created_at" name="query[element]" id="query_element_created_at"><label class="collection_radio_buttons margin-left-10px text-gray-color" for="query_element_created_at">Du plus récent au plus ancien</label></div>
+            </div>
+
+          </div>
           <%= f.hidden_field :latitude %>
           <%= f.hidden_field :longitude %>
-          <%= f.button :submit %>
-      <% end %>
-    </div>
-      <div class="card-display" id="cards" id="left-screen">
-        <div class="row">
-          <% @issues.each do |issue| %>
-          <div class="col-xs-12 col-sm-12 col-md-6">
-            <%= render 'card', issue: issue %>
+          <input type="submit" name="commit" value="Trier" class="btn-order" data-disable-with="Save Query">
+       <% end %>
+      </div>
+
+      <div class="row">
+        <div class="card-display margin-top-15px" id="cards" id="left-screen">
+          <div class="row">
+            <% @issues.each do |issue| %>
+            <div class="col-xs-12 col-sm-12 col-md-6">
+              <%= render 'card', issue: issue %>
+            </div>
+            <% end %>
           </div>
-          <% end %>
         </div>
       </div>
     </div>
