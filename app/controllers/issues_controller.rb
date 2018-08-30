@@ -5,7 +5,12 @@ class IssuesController < ApplicationController
   def index
     @issues = Issue.select('*, (select sum(direction) from votes where issue_id = issues.id) as total')
    .order('total desc NULLS LAST, created_at desc')
+   if user_signed_in?
     @issues_marker = Issue.where(city: current_user.city).where.not(latitude: nil, longitude: nil)
+    else
+    @issues_marker = Issue.where.not(latitude: nil, longitude: nil)
+  end
+
     @markers = @issues_marker.map do |issue|
       {
         lat: issue.latitude,
