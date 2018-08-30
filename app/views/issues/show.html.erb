@@ -29,8 +29,8 @@
     </div>
 
     <div class="issue-card-status">
-      <% if @issue.fix_reports.any?{ |fix_report| fix_report.user == current_user } %>
-         <p class="issue-card-status-solved">Problème résolu</p>
+      <% if @issue.fix_reports.any?{ |fix_report| fix_report.user == current_user } && @issue.fix_status != "resolu" %>
+         <p class="issue-card-status-solved">Problème indiqué comme résolu</p>
       <% else %>
         <p class="issue-status <%= @issue.fix_status.delete(" ") %>"><%= @issue.fix_status.capitalize.gsub("_", " ") %> </p>
       <% end %>

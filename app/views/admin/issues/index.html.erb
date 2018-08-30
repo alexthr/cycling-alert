@@ -1,6 +1,7 @@
 
 <div class="wrapper">
     <div class="container">
+      <h5>Bonjour, <%= current_user.username %>, il vous reste <%= @issues.where(fix_status: 0).count %> problèmes à traiter </h5>
       <div class="select"><h6>Trier :</h6>
           <%= simple_form_for :query, url: admin_issues_path, method: :get do |f| %>
           <%= f.input :city, collection: @cities %>
@@ -20,10 +21,11 @@
         </div>
       </div>
     </div>
-  </div>
-    <div
-    id="stickymap"
-    data-mkers="<%= @mkers.to_json %>"
-    > </div>
+
+  <div
+  id="stickymap"
+  data-mkers="<%= @mkers.to_json %>"
+  > </div>
 
 </div>
+
