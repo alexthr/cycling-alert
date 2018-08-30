@@ -1,5 +1,4 @@
 <div class="footer footer-image" style="background-image: url('<%= cl_image_path "footer_background" %>');">
-  <% end %>
 
   <div class="footer-links" align="center">
     <a href="#"><i class="fab fa-github-alt"></i></a>
@@ -8,3 +7,7 @@
     <a href="#"><i class="fab fa-twitter"></i></a>
   </div>
 </div>
+
+<%= link_to new_issue_path, class: "btn-new" do %>
+  <i class="fas fa-plus"></i>
+<% end %>
