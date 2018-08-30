@@ -4,7 +4,7 @@
       <div class="select"><h6>Trier :</h6>
           <%= simple_form_for :query, url: admin_issues_path, method: :get do |f| %>
           <%= f.input :city, collection: @cities %>
-          <%= f.input :element, as: :radio_buttons, collection: {'Par statut' => :fix_status, 'Par vote' => :vote_count, 'Par date' => :created_at}, placeholder: 'résolu', label: '' %>
+          <%= f.input :element, label: false, as: :radio_buttons, collection: {'Par statut' => :fix_status, 'Par vote' => :vote_count, 'Par date' => :created_at}, placeholder: 'résolu' %>
           <%= f.hidden_field :latitude %>
           <%= f.hidden_field :longitude %>
           <%= f.button :submit %>

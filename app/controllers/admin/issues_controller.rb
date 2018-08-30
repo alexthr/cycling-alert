@@ -1,11 +1,8 @@
 class Admin::IssuesController < ApplicationController
 
   def index
-    # @issues = Issue.all
     @cities = Issue.cities
     @cities += ['Toutes les villes', 'Autour de moi']
-   #  Issue.select('*, (select sum(direction) from votes where issue_id = issues.id) as total')
-   # .order('total, created_at desc NULLS LAST')
     if params[:query].nil?
       @issues = Issue.where(city: current_user.city)
     elsif query_params[:city] == 'Toutes les villes'
@@ -18,7 +15,8 @@ class Admin::IssuesController < ApplicationController
       @issues = Issue.all
     end
 
-    @issues = @issues.order_by_date_or_status(query_params[:element]) if params[:query].present? && query_params[:element] != 'vote_count' && query_params[:element].present?
+    @issues = @issues.order_by_date_or_status(query_params[:element]) if params[:query].present? && query_params[:element].present? && query_params[:element] != 'vote_count'
+    @issues = @issues.order_by_vote_count if params[:query].present? && query_params[:element].present? && query_params[:element] == 'vote_count'
 
     @mkers = @issues.map do |issue|
       {
