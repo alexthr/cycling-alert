@@ -30,10 +30,10 @@ night_issue = Issue.new(title: "Fin de piste soudaine", description: "La barriè
 stationnement = Issue.new(title: "Stationnement horripilant", description: "Tous les jours, les mêmes véhicules se garent en plein sur la piste cyclable.", address: "14 Rue Eugène et Marie-Louise Cornet, Pantin", city: "Pantin", link_id: 110875369)
 motos = Issue.new(title: "Motos sur la piste", description: "Chaque matin, les motos bloquent la ciculation des cyclistes le long de cette avenue.", address: "80 Quai de Jemmapes, Paris", city: "Paris", link_id: 87813288)
 chantier = Issue.new(title: "Chantier bloquant la piste", description: "Des travaux qui sont là depuis des mois.", address: "75 Quai des Queyries, Bordeaux", city: "Bordeaux", link_id: 113755097)
-police = Issue.new(title: "Police en guerre avec les cyclistes", description: "Tranquillement, la préfecture de police a fait de cette piste cyclable son parking VIP.", address: "70 cours de verdun, Bordeaux", city: "Bordeaux", link_id: 100256439)
+police = Issue.new(title: "Police en guerre avec les cyclistes", description: "Tranquillement, la préfecture de police a fait de cette piste cyclable son parking VIP.", address: "43 cours Portal, Bordeaux", city: "Bordeaux", link_id: 52831173)
 
 
-croisement = Issue.new(title: "Végétation luxuriante", description: "Ce buisson bloque la circulation des cyclistes.", solution: 'Raser le buisson.', address: "148, cours Balguerie Stuttenberg, Bordeaux", city: "Bordeaux", link_id: 58078861)
+croisement = Issue.new(title: "Végétation luxuriante", description: "Ce buisson bloque la circulation des cyclistes.", solution: 'Raser le buisson.', address: "122, cours Balguerie Stuttenberg, Bordeaux", city: "Bordeaux", link_id: 58078896)
 piste = Issue.new(title: "Buisson gênant", description: 'Un énorme buisson bloque la circulation des cyclistes.', solution: 'Embaucher des jardiniers.', address: "36, rue René Vaché, Talence", city: "Talence", link_id: 46829827)
 eclairage = Issue.new(title: "Travaux sur la route", description: "On ne peut plus emprunter ce chemin à cause des travaux et il n y a pas de signalement.", solution: 'Remettre la lumière.', address: "50, rue Servandoni, Bordeaux", city: "Bordeaux", link_id: 2684558)
 dangereux = Issue.new(title: "Stationnement sur la piste", description: 'Cette piste est encombrée par les voitures qui sont mal garées et jamais verbalisées.', solution: "Améliorer la signalisation, le panneau d'interdiction de stationnement ne se voit pas .", address: "6, rue de Condé, Bordeaux", city: "Bordeaux", link_id: 15871798)
