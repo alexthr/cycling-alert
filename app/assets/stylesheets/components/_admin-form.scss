@@ -13,8 +13,10 @@
   border-radius: 25%;
   color: $green;
   justify-content: center;
-}
 
-// .admin-dashboard {
-//   display: flex;
-// }
+  &:hover {
+  color: white;
+  background-color: $green;
+  opacity: 1;
+  }
+}

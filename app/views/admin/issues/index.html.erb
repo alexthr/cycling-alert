@@ -8,15 +8,27 @@
       <div class="admin-dashboard">
         <div class="parent-statistic">
           <p class="statistic bg-red"><%= @issues.where(fix_status: 0).length %></p>
-          <h5>problèmes à traiter</h5>
+          <% if @issues.where(fix_status: 0).length < 2 %>
+            <h5>problème à traiter</h5>
+          <% else %>
+            <h5>problèmes à traiter</h5>
+          <% end %>
         </div>
         <div class="parent-statistic">
           <p class="statistic bg-orange"><%= @issues.where(fix_status: 1).length %></p>
-          <h5>problèmes en cours</h5>
+          <% if @issues.where(fix_status: 1).length < 2 %>
+            <h5>en cours de traitement</h5>
+          <% else %>
+            <h5>en cours de traitement</h5>
+          <% end %>
         </div>
         <div class="parent-statistic">
           <p class="statistic bg-green"><%= @issues.where(fix_status: 2).length %></p>
-          <h5>problèmes résolus</h5>
+          <% if @issues.where(fix_status: 2).length < 2 %>
+            <h5>problème résolu</h5>
+          <% else %>
+            <h5>problèmes résolus</h5>
+          <% end %>
         </div>
       </div>
 
