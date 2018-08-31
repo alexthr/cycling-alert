@@ -20,18 +20,25 @@
   </div>
 
   <div class="issue-votes-action">
-    <% if @issue.votes.any? { |vote| vote.user == current_user } %>
+    <% if current_user.admin? %>
+      <% if @issue.resolu? %>
+        This issue has been solved
+      <% else %>
+        <p><%= link_to "Mark this issue as solved", issue_fix_reports_path(@issue), method: :post, class: "change-status", id: "status-button" %></p>
+      <% end %>
+
+    <% elsif @issue.votes.any? { |vote| vote.user == current_user } %>
 
       <div class="issue-votes-action-angry issue-votes-disable">
         <div class="issue-votes-action-angry-text ">
-          <i class="far fa-angry""></i>
+          <i class="far fa-angry"></i>
           <p>Priority</p>
         </div>
       </div>
 
       <div class="issue-votes-action-care issue-votes-disable">
         <div class="issue-votes-action-care-text">
-          <i class="fas fa-caret-down"></i>
+          <i class="far fa-grin-tongue"></i>
           <p>Not a priority</p>
         </div>
       </div>
