@@ -5,12 +5,13 @@ Comment.destroy_all
 
 puts 'Creating issues and users...'
 
-sanchinho = User.new(username: 'sanchinho', password: '123456', email: 'yannick.sanchez.guasch@gmail.com', city: "Bordeaux")
-sanchinho.avatar_url = "https://avatars1.githubusercontent.com/u/7702269?v=4"
-sanchinho.save
+
 carine = User.new(username: "carineLC", email: "carine.le.charles@gmail.com", password: "123456", city: "Bordeaux")
 carine.avatar_url = "https://avatars0.githubusercontent.com/u/39913570?v=4"
 carine.save
+sanchinho = User.new(username: 'sanchinho', password: '123456', email: 'yannick.sanchez.guasch@gmail.com', city: "Bordeaux")
+sanchinho.avatar_url = "https://avatars1.githubusercontent.com/u/7702269?v=4"
+sanchinho.save
 alexthr = User.new(username: "alexthr", email: "alex.thoreux@gmail.com", password: "123456", city: "Bordeaux")
 alexthr.avatar_url = "https://avatars0.githubusercontent.com/u/40071634?v=4"
 alexthr.save
@@ -23,17 +24,33 @@ juppe.save
 
 puts 'Users created!'
 
-trou = Issue.new(title: "Bite gênante", description: 'Cette bite est en plein milieu de la piste cyclable.', solution: 'Couper la bite.', address: "50, cours Victor Hugo, Bordeaux", city: "Bordeaux", link_id: 86694343)
-croisement = Issue.new(title: 'Végétation luxuriante', description: 'Un giga buisson bloque la circulation des cyclistes.', solution: 'Raser le buisson.', address: "148, cours Balguerie Stuttenberg, Bordeaux", city: "Bordeaux", link_id: 58078861)
-piste = Issue.new(title: 'Patrick Buisson', description: 'Un giga buisson bloque la circulation des cyclistes.', solution: 'Raser le buisson.', address: "36, rue René Vaché, Talence", city: "Talence", link_id: 46829827)
-eclairage = Issue.new(title: "Travaux sur la route", description: "On ne peut plus emprunter ce chemin à cause des travaux et il n y a pas de signalement.", solution: 'Remettre la lumière.', address: "50, rue Servandoni, Bordeaux", city: "Bordeaux", link_id: 2684558)
-dangereux = Issue.new(title: 'Stationnement gênant', description: 'Cette piste est encombrée par les voitures qui sont mal garées et jamais verbalisées.', solution: 'Mettre des PV.', address: "6, rue de Condé, Bordeaux", city: "Bordeaux", link_id: 15871798)
-sens_interdit = Issue.new(title: "Poteau gênant", description: "Un poteau a poussé au beau milieu de la piste, c'est embêtant", solution: 'Déplacer la piste ou le poteau.', address: "9, rue Rolland, Bordeaux", city: "Bordeaux", link_id: 5227202)
-travaux = Issue.new(title: 'Grillage sur la piste', description: 'On ne peut plus emprunter ce chemin à cause du grillage et il n y a pas de signalement.', solution: 'Avertir les cyclistes avec un panneau.', address: "10, rue villa Gaudelet, Paris", city: "Paris", link_id: 88351737)
-viaduc = Issue.new(title: 'Champ de bosses', description: 'Je ne peux plus circuler.', solution: 'Aplanir la route.', address: "10, rue du 14 juillet, le Pré-Saint-Gervais", city: "Le Pré-Saint-Gervais", link_id: 24135478)
-acces = Issue.new(title: 'Bite gênante', description: 'Encore une bite à éviter !', solution: "Arrêter l'alcool.", address: "14, rue de l'Odéon, Paris", city: "Paris", link_id: 105803567)
 
-trou.user = sanchinho
+
+night_issue = Issue.new(title: "Fin de piste soudaine", description: "La barrière bloque l'évacuation de la piste.", address: "65 Quai de Brazza, Bordeaux", city: "Bordeaux", link_id: 4506259)
+stationnement = Issue.new(title: "Stationnement horripilant", description: "Tous les jours, les mêmes véhicules se garent en plein sur la piste cyclable.", address: "14 Rue Eugène et Marie-Louise Cornet, Pantin", city: "Pantin", link_id: 110875369)
+motos = Issue.new(title: "Motos sur la piste", description: "Chaque matin, les motos bloquent la ciculation des cyclistes le long de cette avenue.", address: "80 Quai de Jemmapes, Paris", city: "Paris", link_id: 87813288)
+chantier = Issue.new(title: "Chantier bloquant la piste", description: "Des travaux qui sont là depuis des mois.", address: "75 Quai des Queyries, Bordeaux", city: "Bordeaux", link_id: 113755097)
+police = Issue.new(title: "Police en guerre avec les cyclistes", description: "Tranquillement, la préfecture de police a fait de cette piste cyclable son parking VIP.", address: "70 cours de verdun, Bordeaux", city: "Bordeaux", link_id: 100256439)
+
+
+croisement = Issue.new(title: "Végétation luxuriante", description: "Ce buisson bloque la circulation des cyclistes.", solution: 'Raser le buisson.', address: "148, cours Balguerie Stuttenberg, Bordeaux", city: "Bordeaux", link_id: 58078861)
+piste = Issue.new(title: "Buisson gênant", description: 'Un énorme buisson bloque la circulation des cyclistes.', solution: 'Embaucher des jardiniers.', address: "36, rue René Vaché, Talence", city: "Talence", link_id: 46829827)
+eclairage = Issue.new(title: "Travaux sur la route", description: "On ne peut plus emprunter ce chemin à cause des travaux et il n y a pas de signalement.", solution: 'Remettre la lumière.', address: "50, rue Servandoni, Bordeaux", city: "Bordeaux", link_id: 2684558)
+dangereux = Issue.new(title: "Stationnement sur la piste", description: 'Cette piste est encombrée par les voitures qui sont mal garées et jamais verbalisées.', solution: "Améliorer la signalisation, le panneau d'interdiction de stationnement ne se voit pas .", address: "6, rue de Condé, Bordeaux", city: "Bordeaux", link_id: 15871798)
+sens_interdit = Issue.new(title: "Poteau au beau milieu de la piste", description: "Un poteau a poussé au beau milieu de la piste, c'est embêtant", solution: 'Déplacer la piste ou le poteau.', address: "9, rue Rolland, Bordeaux", city: "Bordeaux", link_id: 5227202)
+travaux = Issue.new(title: "Grillage sur la piste", description: 'On ne peut plus emprunter ce chemin à cause du grillage et il n y a pas de signalement.', solution: 'Avertir les cyclistes avec un panneau.', address: "10, rue villa Gaudelet, Paris", city: "Paris", link_id: 88351737)
+viaduc = Issue.new(title: "Champ de bosses", description: 'Je ne peux plus circuler.', solution: 'Aplanir la route.', address: "10, rue du 14 juillet, le Pré-Saint-Gervais", city: "Le Pré-Saint-Gervais", link_id: 24135478)
+acces = Issue.new(title: "Obstacle encombrant", description: "Le mois dernier, cette bite est apparue en plein milieu de la piste", solution: "Mettre en place une déviation ou la raser.", address: "14, rue de l'Odéon, Paris", city: "Paris", link_id: 105803567)
+
+
+
+night_issue.user = carine
+stationnement.user = alexthr
+motos.user = sanchinho
+chantier.user = visant
+police.user = carine
+
+
 croisement.user = carine
 piste.user = sanchinho
 eclairage.user = alexthr
@@ -45,7 +62,13 @@ acces.user = visant
 
 puts 'User assigned'
 
-trou.photo_urls = ["https://res.cloudinary.com/alexthr/image/upload/v1535107482/seed4.jpg"]
+night_issue.photo_urls = ["https://res.cloudinary.com/alexthr/image/upload/v1535702418/CpCSG7FUIAAFfVB.jpg"]
+stationnement.photo_urls = ["https://res.cloudinary.com/alexthr/image/upload/v1535702418/DKjBFRXXkAA1_j_.jpg"]
+motos.photo_urls = ["https://res.cloudinary.com/alexthr/image/upload/v1535702418/DKaiWVKXcAAmnML.jpg"]
+chantier.photo_urls = ["https://res.cloudinary.com/alexthr/image/upload/v1535702418/CeITiFJXIAQ6hR3.jpg"]
+police.photo_urls = ["https://res.cloudinary.com/alexthr/image/upload/v1535702424/DQNDxXGWsAEBME5.jpg"]
+
+
 croisement.photo_urls = ["https://res.cloudinary.com/alexthr/image/upload/v1535113548/seed2.jpg"]
 piste.photo_urls = ["https://res.cloudinary.com/alexthr/image/upload/v1535122297/seed9.jpg"]
 eclairage.photo_urls = ["https://res.cloudinary.com/alexthr/image/upload/v1535114280/seed1.jpg"]
@@ -57,7 +80,12 @@ acces.photo_urls = ["https://www.terraeco.net/IMG/jpg/Reims-01.jpg"]
 
 puts 'Photos uploaded'
 
-trou.save
+night_issue.save
+stationnement.save
+motos.save
+chantier.save
+police.save
+
 croisement.save
 piste.save
 eclairage.save
@@ -67,7 +95,14 @@ travaux.save
 viaduc.save
 acces.save
 
-trou.vote_count = 5
+
+night_issue.vote_count = 6
+stationnement.vote_count = 9
+motos.vote_count = 15
+chantier.vote_count = 8
+police.vote_count = 25
+
+eclairage.vote_count = 23
 croisement.vote_count = 2
 piste.vote_count = 10
 dangereux.vote_count = 2
@@ -78,19 +113,19 @@ acces.vote_count = 6
 puts 'Issues created!'
 
 comment1 = Comment.create(content: "Je valide ce problème ! J'y passe tous les matins.", user_id: alexthr.id)
-comment2 = Comment.create(content: "Je n'en peux plus de ces bites !", user_id: carine.id)
-trou.comments = [comment1, comment2]
+comment2 = Comment.create(content: "Ils se pensent au-dessus des lois", user_id: carine.id)
+police.comments = [comment1, comment2]
 
 comment3 = Comment.create(content: "Un coup de tronçonneuse et ça repart.", user_id: sanchinho.id)
 comment4 = Comment.create(content: "J'avais oublié ce buisson l'autre jour et je suis tombé dedans à pleine vitesse.", user_id: sanchinho.id)
 comment5 = Comment.create(content: "Je valide ! On ne voit même plus la piste cyclable.", user_id: alexthr.id)
-comment6 = Comment.create(content: "Coupez-lui la touffe!", user_id: visant.id)
+comment6 = Comment.create(content: "Du boulot pour les jardniers !", user_id: visant.id)
 croisement.comments =  [comment3, comment4, comment5, comment6]
 
 piste.comments = [comment6]
 
 comment7 = Comment.create(content: "Ces travaux durent depuis plusieurs mois...", user_id: carine.id)
-comment8 = Comment.create(content: "Juppé à la rescousse!", user_id: sanchinho.id)
+comment8 = Comment.create(content: "Juppé à la rescousse !", user_id: sanchinho.id)
 comment9 = Comment.create(content: "Il y a une piste cyclable qui contourne les travaux si vous prenez la rue à droite.", user_id: visant.id)
 eclairage.comments = [comment7, comment8, comment9]
 
@@ -99,8 +134,8 @@ dangereux.comments = [comment10]
 
 comment11 = Comment.create(content: "Ce poteau est dangereux car il est en bas d'une descente.", user_id: alexthr.id)
 comment12 = Comment.create(content: "Exact ! Un soir en pleine nuit, je ne l'avais pas vu et je l'ai pris en pleine face.", user_id: carine.id)
-comment13 = Comment.create(content: "J'ai fait la même..'", user_id: visant.id)
-comment14 = Comment.create(content: "Que fait la mairie ?", user_id: sanchinho.id)
+comment13 = Comment.create(content: "J'ai fait la même...'", user_id: visant.id)
+comment14 = Comment.create(content: "Que fait la max@irie ?", user_id: sanchinho.id)
 sens_interdit.comments = [comment11, comment12, comment13, comment14]
 
 comment15 = Comment.create(content: "Mieux que les montagnes russes !", user_id: sanchinho.id)
