@@ -17,9 +17,9 @@
         <div class="parent-statistic">
           <p class="statistic bg-orange"><%= @issues.where(fix_status: 1).length %></p>
           <% if @issues.where(fix_status: 1).length < 2 %>
-            <h5>problème en cours</h5>
+            <h5>en cours de traitement</h5>
           <% else %>
-            <h5>problèmes en cours</h5>
+            <h5>en cours de traitement</h5>
           <% end %>
         </div>
         <div class="parent-statistic">
