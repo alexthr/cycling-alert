@@ -21,7 +21,7 @@
 
   <div class="issue-votes-action">
     <% if current_user.admin? %>
-      <% if @issue.resolu? %>
+      <% if @issue.solved? %>
         This issue has been solved
       <% else %>
         <p><%= link_to "Mark this issue as solved", issue_fix_reports_path(@issue), method: :post, class: "change-status", id: "status-button" %></p>
